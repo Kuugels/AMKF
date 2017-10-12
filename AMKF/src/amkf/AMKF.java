@@ -36,7 +36,7 @@ public class AMKF extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.initStyle(StageStyle.TRANSPARENT);
-        root = FXMLLoader.load(getClass().getResource("indexMusta.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 
         final Scene scene = new Scene(root, Color.TRANSPARENT);
         stage.setScene(scene);
