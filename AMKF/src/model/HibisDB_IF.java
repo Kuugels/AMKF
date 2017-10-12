@@ -18,4 +18,6 @@ public interface HibisDB_IF {
     public abstract void resetAllPisteet();
     public abstract Koulutus[] getTopKoulutukset(int topMäärä);
     public abstract Asuinalue[] readAsuinalueet();
+    public abstract Koulu readKoulu(int id);
+    public abstract void sulje();
 }

@@ -55,4 +55,9 @@ public class AMKFKone implements AMKFKone_IF {
         return alueStrTaul;
     }
     
+    @Override
+    public void sulje(){
+        dao.sulje();
+    }
+    
 }

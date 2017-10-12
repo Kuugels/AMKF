@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import static javafx.application.Application.setUserAgentStylesheet;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -117,6 +120,18 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         // do what you have to do
         stage.close();
+    }
+    
+    public void kysOnAction() {
+        MenuButton kys1 = new MenuButton("Valitse");
+        for (int i = 1; i < 22; i++) {
+            MenuItem kys1k = new MenuItem("Kyllä");
+            kys1k.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    kys1.setText("Kyllä");
+                }
+            });
+        }
     }
 
 }

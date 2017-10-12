@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,9 +18,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.AMKFKone;
-import model.AMKFKone_IF;
+import model.Käyttäjä;
 
 /**
  * FXML Controller class
@@ -28,31 +30,45 @@ import model.AMKFKone_IF;
  */
 public class LoginController implements Initializable {
 
-    String[] maakunnat;
+    private String[] maakunnat;
 
-    AMKFKone kone = new AMKFKone();
+    private AMKFKone kone = new AMKFKone();
+    private Käyttäjä kauttaja = new Käyttäjä();
 
     @FXML
-    MenuButton maakuntaNappi;
+    private MenuButton maakuntaNappi;
+
+    @FXML
+    private TextField etunimi;
+
+    @FXML
+    private TextField sukunimi;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Hakee maakunnat tietokannasta
         maakunnat = kone.getAsuinalueet();
-
         asetaMaakunnat(maakunnat);
         maakuntaNappi.getStylesheets().add("/amkf/style.css");
     }
 
     @FXML
     public void haeNappula(ActionEvent event) throws IOException {
+        
+        //Hakee etunimi ja sukunimi kentistä tiedot ja asettaa ne Käyttäjä luokkaan
+        kauttaja.setNimi(etunimi.getText() + " " + sukunimi.getText());
+        System.out.println("Käyttäjän nimi: " + kauttaja.getNimi());
+
+        //Seuraavan scenen lataus
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/amkf/indexMusta.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
         System.out.println("Scene vaihdettu");
+        
+        kone.sulje();
+        System.out.println("Tietokantayhteys suljettu");
     }
 
     //Asettaa tietokannasta haetut maakunnat valikkoon
@@ -60,6 +76,13 @@ public class LoginController implements Initializable {
         for (int i = 0; i < kunnat.length; i++) {
             MenuItem item = new MenuItem(kunnat[i]);
             item.getStyleClass().add("menuItem");
+            item.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent e) {
+                    kauttaja.setAsuinalue(item.getText());
+                    maakuntaNappi.setText(item.getText());
+                    System.out.println("Käyttäjän maakunta: " + kauttaja.getAsuinalue());
+                }
+            });
             maakuntaNappi.getItems().add(item);
         }
     }

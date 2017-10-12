@@ -24,6 +24,12 @@ public class HibisDB implements HibisDB_IF {
             StandardServiceRegistryBuilder.destroy(registry);
             e.printStackTrace();
         }
+        
+    }
+    
+    @Override
+    public void sulje(){
+        istuntotehdas.close();
     }
     
     @Override
@@ -45,6 +51,11 @@ public class HibisDB implements HibisDB_IF {
         } finally {
             istunto.close();
         }
+        return null;
+    }
+    
+    @Override
+    public Koulu readKoulu(int id){
         return null;
     }
     

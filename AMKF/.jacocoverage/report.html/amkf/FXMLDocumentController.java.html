@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FXMLDocumentController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AMKF&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">amkf</a> &gt; <span class="el_source">FXMLDocumentController.java</span></div><h1>FXMLDocumentController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package amkf;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import static javafx.application.Application.setUserAgentStylesheet;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+/**
+ *
+ * @author Samuli Käkönen
+ */
+<span class="nc" id="L31">public class FXMLDocumentController implements Initializable {</span>
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+<span class="nc" id="L37">    }</span>
+
+    public void pinkButton(ActionEvent event) throws IOException {
+
+
+<span class="nc" id="L42">        Parent root = FXMLLoader.load(getClass().getResource(&quot;indexMusta.fxml&quot;));/* Exception */</span>
+<span class="nc" id="L43">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L44">        scene.getStylesheets().clear();</span>
+<span class="nc" id="L45">        System.out.println(&quot;lol&quot;);</span>
+        
+        
+  
+
+<span class="nc" id="L50">    }</span>
+
+    @FXML
+    public void whiteButton(ActionEvent event) throws IOException {
+<span class="nc" id="L54">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L55">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L56">        Parent root = FXMLLoader.load(getClass().getResource(&quot;indexMusta.fxml&quot;));/* Exception */</span>
+<span class="nc" id="L57">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L58">        stage.setScene(scene);</span>
+<span class="nc" id="L59">        stage.show();</span>
+<span class="nc" id="L60">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+<span class="nc" id="L61">    }</span>
+
+    @FXML
+    public void petrolButton(ActionEvent event) throws IOException {
+<span class="nc" id="L65">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L66">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L67">        Parent root = FXMLLoader.load(getClass().getResource(&quot;indexPetrol.fxml&quot;));/* Exception */</span>
+<span class="nc" id="L68">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L69">        stage.setScene(scene);</span>
+<span class="nc" id="L70">        stage.show();</span>
+<span class="nc" id="L71">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+<span class="nc" id="L72">    }</span>
+
+    @FXML
+    public void purpleButton(ActionEvent event) throws IOException {
+<span class="nc" id="L76">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L77">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L78">        Parent root = FXMLLoader.load(getClass().getResource(&quot;indexPurple.fxml&quot;));/* Exception */</span>
+<span class="nc" id="L79">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L80">        stage.setScene(scene);</span>
+<span class="nc" id="L81">        stage.show();</span>
+<span class="nc" id="L82">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+<span class="nc" id="L83">    }</span>
+
+    @FXML
+    public void greenButton(ActionEvent event) throws IOException {
+<span class="nc" id="L87">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L88">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L89">        Parent root = FXMLLoader.load(getClass().getResource(&quot;indexGreen.fxml&quot;));/* Exception */</span>
+<span class="nc" id="L90">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L91">        stage.setScene(scene);</span>
+<span class="nc" id="L92">        stage.show();</span>
+<span class="nc" id="L93">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+<span class="nc" id="L94">    }</span>
+
+    @FXML
+    public void ala(ActionEvent event) throws IOException {
+<span class="nc" id="L98">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L99">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L100">        Parent root = FXMLLoader.load(getClass().getResource(&quot;alaPaina.fxml&quot;));/* Exception */</span>
+<span class="nc" id="L101">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L102">        stage.setScene(scene);</span>
+<span class="nc" id="L103">        stage.show();</span>
+<span class="nc" id="L104">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+<span class="nc" id="L105">    }</span>
+
+    @FXML
+    public javafx.scene.control.Button closeButton;
+
+    @FXML
+    public void closeButtonAction() {
+        // get a handle to the stage
+<span class="nc" id="L113">        Stage stage = (Stage) closeButton.getScene().getWindow();</span>
+        // do what you have to do
+<span class="nc" id="L115">        stage.close();</span>
+<span class="nc" id="L116">    }</span>
+    
+    public void kysOnAction() {
+<span class="nc" id="L119">        MenuButton kys1 = new MenuButton(&quot;Valitse&quot;);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        for (int i = 1; i &lt; 22; i++) {</span>
+<span class="nc" id="L121">            MenuItem kys1k = new MenuItem(&quot;Kyllä&quot;);</span>
+<span class="nc" id="L122">            kys1k.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</span>
+                public void handle(ActionEvent e) {
+<span class="nc" id="L124">                    kys1.setText(&quot;Kyllä&quot;);</span>
+<span class="nc" id="L125">                }</span>
+            });
+        }
+<span class="nc" id="L128">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
