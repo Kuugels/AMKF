@@ -19,11 +19,10 @@
    <children>
       <Pane id="reunus" layoutX="29.0" layoutY="84.0" prefHeight="533.0" prefWidth="993.0" styleClass="reunus">
          <children>
-            <Button layoutX="405.0" layoutY="427.0" mnemonicParsing="false" text="Hae" />
+            <Button fx:id="haeButton" layoutX="405.0" layoutY="427.0" mnemonicParsing="false" onAction="#haeNappula" text="Hae" />
             <MenuButton fx:id="maakuntaNappi" alignment="CENTER" layoutX="405.0" layoutY="362.0" mnemonicParsing="false" styleClass="menuButton" text="Maakunta">
               <items>
-                <MenuItem mnemonicParsing="false" styleClass="menuItem" text="Uusimaa" />
-                <MenuItem mnemonicParsing="false" styleClass="menuItem" text="Kymenlaakso" />
+                
               </items>
             </MenuButton>
          </children>
