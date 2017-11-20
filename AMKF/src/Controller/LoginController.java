@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.AMKFKone;
 import model.Käyttäjä;
+import model.LanguageSelection;
 
 /**
  * FXML Controller class
@@ -62,9 +63,13 @@ public class LoginController implements Initializable {
     public javafx.scene.control.Button closeButton;
     
     String lang;
+    LanguageSelection languageSelection;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        languageSelection = LanguageSelection.getInstance();
+        
         //Kielipaketin lataus
         lang = "FI";
         locale = new Locale("fi", "FI");

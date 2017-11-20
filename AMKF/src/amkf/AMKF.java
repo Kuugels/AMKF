@@ -20,7 +20,9 @@ public class AMKF extends Application {
 
     Parent root;
 
-    /**Käynnistää käyttöliittymän*/
+    /**Käynnistää käyttöliittymän
+     * @param stage jepulis
+     * @throws java.lang.Exception kepulis*/
     @Override
     public void start(Stage stage) throws Exception {
 
