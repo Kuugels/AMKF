@@ -20,6 +20,7 @@ public class AMKF extends Application {
 
     Parent root;
 
+    /**Käynnistää käyttöliittymän*/
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -38,7 +39,6 @@ public class AMKF extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        //jees box
     }
 
 }

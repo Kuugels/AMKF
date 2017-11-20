@@ -21,7 +21,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.AMKFKone;
-import model.AMKFKone_IF;
 import model.Käyttäjä;
 
 /**
@@ -29,13 +28,12 @@ import model.Käyttäjä;
  *
  * @author Samuli Käkönen
  */
-<span class="nc" id="L32">public class LoginController implements Initializable {</span>
+<span class="nc" id="L31">public class LoginController implements Initializable {</span>
 
     private String[] maakunnat;
 
-<span class="nc" id="L36">    private AMKFKone kone = new AMKFKone();</span>
-
-<span class="nc" id="L38">    private Käyttäjä kauttaja = new Käyttäjä();</span>
+<span class="nc" id="L35">    private AMKFKone kone = new AMKFKone();</span>
+<span class="nc" id="L36">    private Käyttäjä kauttaja = new Käyttäjä();</span>
 
     @FXML
     private MenuButton maakuntaNappi;
@@ -49,53 +47,60 @@ import model.Käyttäjä;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Hakee maakunnat tietokannasta
-<span class="nc" id="L52">        maakunnat = kone.getAsuinalueet();</span>
-<span class="nc" id="L53">        asetaMaakunnat(maakunnat);</span>
-<span class="nc" id="L54">        maakuntaNappi.getStylesheets().add(&quot;/amkf/style.css&quot;);</span>
-<span class="nc" id="L55">    }</span>
+<span class="nc" id="L50">        maakunnat = kone.getAsuinalueet();</span>
+<span class="nc" id="L51">        asetaMaakunnat(maakunnat);</span>
+<span class="nc" id="L52">        maakuntaNappi.getStylesheets().add(&quot;/amkf/style.css&quot;);</span>
+<span class="nc" id="L53">    }</span>
 
+    /**Syöttää käyttäjän tiedot tietokantaan ja avaa seuraavan ikkunan*/
     @FXML
     public void haeNappula(ActionEvent event) throws IOException {
+        
         //Hakee etunimi ja sukunimi kentistä tiedot ja asettaa ne Käyttäjä luokkaan
 <span class="nc" id="L60">        kauttaja.setNimi(etunimi.getText() + &quot; &quot; + sukunimi.getText());</span>
-
-<span class="nc" id="L62">        System.out.println(&quot;Käyttäjän nimi: &quot; + kauttaja.getNimi());</span>
+<span class="nc" id="L61">        System.out.println(&quot;Käyttäjän nimi: &quot; + kauttaja.getNimi());</span>
 
         //Seuraavan scenen lataus
-<span class="nc" id="L65">        Node node = (Node) event.getSource();</span>
-<span class="nc" id="L66">        Stage stage = (Stage) node.getScene().getWindow();</span>
-<span class="nc" id="L67">        Parent root = FXMLLoader.load(getClass().getResource(&quot;/amkf/indexMusta.fxml&quot;));</span>
-<span class="nc" id="L68">        Scene scene = new Scene(root);</span>
-<span class="nc" id="L69">        stage.setScene(scene);</span>
-<span class="nc" id="L70">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
-<span class="nc" id="L71">    }</span>
+<span class="nc" id="L64">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L65">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L66">        Parent root = FXMLLoader.load(getClass().getResource(&quot;/amkf/indexMusta.fxml&quot;));</span>
+<span class="nc" id="L67">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L68">        stage.setScene(scene);</span>
+<span class="nc" id="L69">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+        
+<span class="nc" id="L71">        kone.sulje();</span>
+<span class="nc" id="L72">        System.out.println(&quot;Tietokantayhteys suljettu&quot;);</span>
+<span class="nc" id="L73">    }</span>
 
+    
     //Asettaa tietokannasta haetut maakunnat valikkoon
+    /**Asettaa tietokannasta haetut maakunnat valikkoon*/
     public void asetaMaakunnat(String[] kunnat) {
-<span class="nc bnc" id="L75" title="All 2 branches missed.">        for (int i = 0; i &lt; kunnat.length; i++) {</span>
-<span class="nc" id="L76">            MenuItem item = new MenuItem(kunnat[i]);</span>
-<span class="nc" id="L77">            item.getStyleClass().add(&quot;menuItem&quot;);</span>
-<span class="nc" id="L78">            item.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for (int i = 0; i &lt; kunnat.length; i++) {</span>
+<span class="nc" id="L80">            MenuItem item = new MenuItem(kunnat[i]);</span>
+<span class="nc" id="L81">            item.getStyleClass().add(&quot;menuItem&quot;);</span>
+<span class="nc" id="L82">            item.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</span>
                 public void handle(ActionEvent e) {
-<span class="nc" id="L80">                    kauttaja.setAsuinalue(item.getText());</span>
-<span class="nc" id="L81">                    maakuntaNappi.setText(item.getText());</span>
-<span class="nc" id="L82">                    System.out.println(&quot;Käyttäjän maakunta: &quot; + kauttaja.getAsuinalue());</span>
-<span class="nc" id="L83">                }</span>
+<span class="nc" id="L84">                    kauttaja.setAsuinalue(item.getText());</span>
+<span class="nc" id="L85">                    maakuntaNappi.setText(item.getText());</span>
+<span class="nc" id="L86">                    System.out.println(&quot;Käyttäjän maakunta: &quot; + kauttaja.getAsuinalue());</span>
+<span class="nc" id="L87">                }</span>
             });
-<span class="nc" id="L85">            maakuntaNappi.getItems().add(item);</span>
+<span class="nc" id="L89">            maakuntaNappi.getItems().add(item);</span>
         }
-<span class="nc" id="L87">    }</span>
+<span class="nc" id="L91">    }</span>
 
     @FXML
     public javafx.scene.control.Button closeButton;
 
+    /**Sulkee ohjelman*/
     @FXML
     public void closeButtonAction() {
         // get a handle to the stage
-<span class="nc" id="L95">        Stage stage = (Stage) closeButton.getScene().getWindow();</span>
+<span class="nc" id="L100">        Stage stage = (Stage) closeButton.getScene().getWindow();</span>
         // do what you have to do
-<span class="nc" id="L97">        stage.close();</span>
-<span class="nc" id="L98">    }</span>
+<span class="nc" id="L102">        stage.close();</span>
+<span class="nc" id="L103">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

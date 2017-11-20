@@ -1,3 +1,7 @@
+/**
+ * Tämä luokka ottaa yhteyden tietokantaan ja hakee tietoa sieltä
+ */
+
 package model;
 
 import org.hibernate.Session;
@@ -27,11 +31,15 @@ public class HibisDB implements HibisDB_IF {
         
     }
     
+    /**
+     * Suljetaan tietokantayhteys
+     */
     @Override
     public void sulje(){
         istuntotehdas.close();
     }
     
+    //Palauttaa Käyttäjä-olion nykyisen käyttäjän tiedoilla
     @Override
     public Käyttäjä readKäyttäjä(int id) {
         Käyttäjä käyttäjä = new Käyttäjä();
@@ -51,14 +59,23 @@ public class HibisDB implements HibisDB_IF {
         } finally {
             istunto.close();
         }
-        return null;
+        return käyttäjä;
     }
     
+    /**
+     *  
+     * @param id Annetaan parametrina halutun koulun id
+     * @return palauttaa Koulu-olion.
+     */
     @Override
     public Koulu readKoulu(int id){
         return null;
     }
     
+    /**
+     * haetaan tietokannasta kaikki koulutuskset.
+     * @return palautetaan ne Koulutus-olion taulukkona
+     */
     @Override
     public Koulutus[] readKoulutukset() {
         Koulutus[] koulutusLista = null;
@@ -81,6 +98,10 @@ public class HibisDB implements HibisDB_IF {
         return koulutusLista;
     }
     
+    /**
+     * 
+     * @return Palauttaa Mielenkiinto-olio-taulukon kaikista mielenkiinnoista
+     */
     @Override
     public Mielenkiinto[] readMielenkiinnot() {
         Mielenkiinto[] mielenkLista = null;
@@ -102,6 +123,11 @@ public class HibisDB implements HibisDB_IF {
 
         return mielenkLista;
     }
+    
+    /**
+     * 
+     * @return Palauttaa Asuinalue-olio-taulukon kaikista asuinalueista
+     */
     @Override
     public Asuinalue[] readAsuinalueet(){
         Asuinalue[] asAlueLista = null;
@@ -123,6 +149,16 @@ public class HibisDB implements HibisDB_IF {
         return asAlueLista;
     }
     
+    
+    /**
+     * Lisätään Koulutus-tauluun pisteet-columniin pisteitä.
+     * Parametrinä annetaan pisteiden määrä ja tagi. Annetaan pisteet kaikille koulutuksille, joilla on
+     * kyseinen tagi.
+     * 
+     * @param pisteet pisteiden määrä.
+     * @param tagi tagi, jolle pisteet annetaan
+     * @return Palauttaa true, jos lisäys onnistui, falsen, jos ei.
+     */
     @Override
     public boolean lisääPisteitä(int pisteet, String tagi) {
         boolean onnistui = false;
@@ -154,6 +190,9 @@ public class HibisDB implements HibisDB_IF {
         return onnistui;
     }
 
+    /**
+     * Asettaa tietokantaan jokaisen koulutuksen kohdalle pisteiden arvoksi 0
+     */
     @Override
     public void resetAllPisteet() {
         Koulutus[] koulutukset = readKoulutukset();
@@ -167,7 +206,12 @@ public class HibisDB implements HibisDB_IF {
         }
 
     }
-
+    /**
+     * Antaa Koulutus-olio-taulukon eniten saaneista koulutuksista.
+     * 
+     * @param topMäärä Parametrinä annetaan määrä, kuinka monta koulutusta halutaan.
+     * @return Koulutus-taulukko
+     */
     @Override
     public Koulutus[] getTopKoulutukset(int topMäärä) {
         Koulutus[] koulutukset = readKoulutukset();
@@ -197,12 +241,16 @@ public class HibisDB implements HibisDB_IF {
         return topKoulutukset;
 
     }
-
+    
+    /**
+     * Palauttaa string-taulukon Koulutus-olion tageista.
+     * @param koulutus koulutus, jonka tagit halutaan erotella
+     * @return string-taulukko
+     */
     public String[] erotteleTagit(Koulutus koulutus) {
         String[] tagit = koulutus.getTagit().split(" ");
         return tagit;
     }
     
     
-
 }

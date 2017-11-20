@@ -37,17 +37,17 @@
                   <Font name="Frank Ruhl Libre Regular" size="18.0" />
                </font>
             </Button>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" layoutX="-87.0" layoutY="293.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="265.0" scaleShape="false" text="Yhteystiedot" textFill="#1e1d1f">
+            <Button fx:id="yhteystiedotBtn" cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" layoutX="-87.0" layoutY="293.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="265.0" scaleShape="false" text="Yhteystiedot" textFill="#1e1d1f">
                <font>
                   <Font name="Frank Ruhl Libre Regular" size="18.0" />
                </font>
             </Button>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" layoutX="-87.0" layoutY="234.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="265.0" scaleShape="false" text="Koulutukset" textFill="#1e1d1f">
+            <Button fx:id="koulutuksetBtn" cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" layoutX="-87.0" layoutY="234.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="265.0" scaleShape="false" text="Koulutukset" textFill="#1e1d1f">
                <font>
                   <Font name="Frank Ruhl Libre Regular" size="18.0" />
                </font>
             </Button>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" layoutX="-87.0" layoutY="175.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="265.0" scaleShape="false" text="Kysely" textFill="#1e1d1f">
+            <Button fx:id="kyselyBtn" cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="0.0" layoutX="-87.0" layoutY="175.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="265.0" scaleShape="false" text="Kysely" textFill="#1e1d1f">
                <font>
                   <Font name="Frank Ruhl Libre Regular" size="18.0" />
                </font>
@@ -56,7 +56,7 @@
                <content>
                   <AnchorPane id="AnchorPane" prefWidth="745.0" styleClass="AnchorPane" stylesheets="@kysely.css">
                      <children>
-                        <Text layoutX="241.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="otsikko" text="Kysely" AnchorPane.topAnchor="5.029998779296875">
+                        <Text fx:id="kyselyTxt" layoutX="241.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="otsikko" text="Kysely" AnchorPane.topAnchor="5.029998779296875">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -113,10 +113,10 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko pikkutarkka? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="19" GridPane.valignment="CENTER" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko ympäristöasiat lähellä sydäntäsi? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="20" GridPane.valignment="CENTER" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko johtajatyyppiä? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="CENTER" />
-                              <MenuButton fx:id="kys1" mnemonicParsing="false" styleClass="menuButton" text="Valitse" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                              <MenuButton fx:id="kys1" mnemonicParsing="false" styleClass="menuButton" text="Valitse" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
                                  <items>
                                     <MenuItem fx:id="kys1k" mnemonicParsing="false" styleClass="menuItem" text="Kyllä" />
-                                    <MenuItem fx:id="kys2e" mnemonicParsing="false" styleClass="menuItem" text="Ei" />
+                                    <MenuItem fx:id="kys1e" mnemonicParsing="false" styleClass="menuItem" text="Ei" />
                                  </items>
                               </MenuButton>
                               <MenuButton fx:id="kys8" mnemonicParsing="false" styleClass="menuButton" text="Valitse" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
@@ -305,5 +305,6 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Button fx:id="changeLanguage" layoutY="671.0" mnemonicParsing="false" onAction="#language" text="Button" />
     </children>
 </AnchorPane>

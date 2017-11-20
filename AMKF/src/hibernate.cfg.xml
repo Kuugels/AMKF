@@ -12,13 +12,13 @@
    </property>
 
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost:2280/amkfkanta
+      jdbc:mysql://10.114.34.15/amkfkanta
    </property>
    <property name="hibernate.connection.username">
-      olso
+      jenkins
    </property>
    <property name="hibernate.connection.password">
-      olso
+      jenkins
    </property>
    <property name="hbm2ddl.auto">validate</property>
    <property name="show_sql">true</property>
