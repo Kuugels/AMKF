@@ -116,7 +116,7 @@ public class FXMLDocumentController implements Initializable {
         lang = "FI";
         locale = new Locale("fi", "FI");
         eLocale = new Locale("et", "EE");
-        messages = ResourceBundle.getBundle("Controller.MessagesBundle", locale);
+        messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
 
         kone = new AMKFKone();
         buttonit = new ArrayList<MenuButton>();
