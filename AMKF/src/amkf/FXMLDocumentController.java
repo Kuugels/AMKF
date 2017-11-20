@@ -35,19 +35,25 @@ import model.AMKFKone;
  */
 public class FXMLDocumentController implements Initializable {
 
-    
     private Locale locale;
     private Locale eLocale;
     private ResourceBundle messages;
-    
+
+    @FXML
+    private Button kyselyBtn;
+    @FXML
+    private Button koulutuksetBtn;
+    @FXML
+    private Button yhteystiedotBtn;
+
     @FXML
     Button pinkButton;
     @FXML
     private Button changeLanguage;
-    
+
     @FXML
     Button kyselyValmis;
-    
+
     @FXML
     MenuButton kys1;
     @FXML
@@ -92,19 +98,18 @@ public class FXMLDocumentController implements Initializable {
     MenuButton kys21;
     @FXML
     MenuButton kys22;
-    
+
     ArrayList<MenuButton> buttonit;
     private AMKFKone kone;
-    
+
     private Käyttäjä kauttaja = new Käyttäjä();
-    
+
     String lang;
-    
+
     /*
     @FXML
     MenuItem kys1k;
-    */
-
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -112,7 +117,7 @@ public class FXMLDocumentController implements Initializable {
         locale = new Locale("fi", "FI");
         eLocale = new Locale("et", "EE");
         messages = ResourceBundle.getBundle("Controller.MessagesBundle", locale);
-        
+
         kone = new AMKFKone();
         buttonit = new ArrayList<MenuButton>();
         buttonit.add(kys1);
@@ -139,6 +144,7 @@ public class FXMLDocumentController implements Initializable {
         buttonit.add(kys22);
         kysOnAction();
         valmisOnAction();
+        updateGUI();
     }
 
     private final String theme1Url = getClass().getResource("index_pink.css").toExternalForm();
@@ -219,91 +225,94 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void closeButtonAction() {
-        
+
         kone.resetPisteet();
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
         // get a handle to the stage
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        
+
         // do what you have to do
         stage.close();
-        
+
     }
-    
-    public void valmisOnAction(){
+
+    public void valmisOnAction() {
         System.out.println("Valmis kysely");
-        kyselyValmis.setOnAction(new EventHandler<ActionEvent>(){
+        kyselyValmis.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                for(int i = 0; i < buttonit.size(); i++){
+                for (int i = 0; i < buttonit.size(); i++) {
                     lisääPisteitä(i);
                 }
-            }});
+            }
+        });
     }
-    
+
     @FXML
-    public void language(){
+    public void language() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
         if (lang.equals("FI")) {
             Locale.setDefault(eLocale);
-            messages = ResourceBundle.getBundle("Controller.MessagesBundle_ee_EST", Locale.getDefault());
+            messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
             lang = "EE";
-        }else if (lang.equals("EE")) {
+        } else if (lang.equals("EE")) {
             Locale.setDefault(locale);
-            messages = ResourceBundle.getBundle("Controller.MessagesBundle_fi_FI", Locale.getDefault());
+            messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
             lang = "FI";
         }
         updateGUI();
     }
-    
+
     public void updateGUI() {
-        
+        closeButton.setText(messages.getString("shutdown"));
+        kyselyBtn.setText(messages.getString("questions"));
+        koulutuksetBtn.setText(messages.getString("educations"));
+        yhteystiedotBtn.setText(messages.getString("contactinfo"));
     }
-    
+
     public void kysOnAction() {
 
         ObservableList<MenuItem> items;
-        for(int i = 0; i < 22; i++){
+        for (int i = 0; i < 22; i++) {
             MenuButton käsiteltävä = buttonit.get(i);
             items = käsiteltävä.getItems();
-            for(int j = 0; j < items.size(); j++){
-                if(j == 0){
-                items.get(j).setOnAction(new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e) {
-                    käsiteltävä.setText("Kyllä");
-                    
-                }
-            });
-                }else{
+            for (int j = 0; j < items.size(); j++) {
+                if (j == 0) {
                     items.get(j).setOnAction(new EventHandler<ActionEvent>() {
-                public void handle(ActionEvent e) {
-                    käsiteltävä.setText("Ei");
-                    
-                }
-            });
+                        public void handle(ActionEvent e) {
+                            käsiteltävä.setText(messages.getString("yes"));
+
+                        }
+                    });
+                } else {
+                    items.get(j).setOnAction(new EventHandler<ActionEvent>() {
+                        public void handle(ActionEvent e) {
+                            käsiteltävä.setText(messages.getString("no"));
+
+                        }
+                    });
                 }
 
-        }
-        
-        
+            }
+
         }
 
     }
-    
-    public void lisääPisteitä(int kysymysNumero){
+
+    public void lisääPisteitä(int kysymysNumero) {
         System.out.println("Lisätään pisteitä");
         String vastaus = "";
         vastaus = buttonit.get(kysymysNumero).getText();
-        switch(kysymysNumero){
+        switch (kysymysNumero) {
             //Oletko matemaattisesti lahjakas?
             case 0:
-                if(vastaus.equals("Kyllä")){
+                if (vastaus.equals(messages.getString("yes"))) {
                     kone.lisääPisteitä(8, "Matemaattinen");
                     kone.lisääPisteitä(5, "Bisnes");
                     kone.lisääPisteitä(4, "Tekninen");
                     kone.lisääPisteitä(2, "Arkkitehti");
                 }
-                if(vastaus.equals("Ei")){
+                if (vastaus.equals(messages.getString("no"))) {
                     kone.lisääPisteitä(-6, "Matemaattinen");
                     kone.lisääPisteitä(-3, "Bisnes");
                     kone.lisääPisteitä(-2, "Tekninen");
@@ -354,27 +363,28 @@ public class FXMLDocumentController implements Initializable {
             //Kiinnostaako sinua autot ja ajoneuvotekniikka?
             case 15:
                 break;
-            //Vietätkö paljon aikaa tietokoneella?
+            //Vietätkö paljon aikaa tietokoneella? joo :D
             case 16:
                 break;
-            //Pidätkö rakentamisesta ja arkkitehtuurista?
+            //Pidätkö rakentamisesta ja arkkitehtuurista? emmä tiiä :D
             case 17:
                 break;
             //Oletko sujuva puhumaan ja haaveilet myyntityöstä?
             case 18:
                 break;
-            //Oletko pikkutarkka?
+            //Oletko pikkutarkka? en :D
             case 19:
                 break;
-            //Ovatko ympäristöasiat lähellä sydäntäsi?
+            //Ovatko ympäristöasiat lähellä sydäntäsi? ei :D
             case 20:
                 break;
-            //Oletko johtajatyyppiä?
+            //Oletko johtajatyyppiä? en :D
             case 21:
                 break;
-            default: System.out.println("Virhehomma");
+            default:
+                System.out.println("Virhehomma");
                 break;
-                
+
         }
     }
 
