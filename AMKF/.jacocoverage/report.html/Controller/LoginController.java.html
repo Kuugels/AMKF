@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>LoginController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AMKF&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">LoginController.java</span></div><h1>LoginController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.AMKFKone;
+import model.Käyttäjä;
+
+/**
+ * FXML Controller class
+ *
+ * @author Samuli Käkönen
+ */
+<span class="nc" id="L31">public class LoginController implements Initializable {</span>
+
+    private String[] maakunnat;
+
+<span class="nc" id="L35">    private AMKFKone kone = new AMKFKone();</span>
+<span class="nc" id="L36">    private Käyttäjä kauttaja = new Käyttäjä();</span>
+
+    @FXML
+    private MenuButton maakuntaNappi;
+
+    @FXML
+    private TextField etunimi;
+
+    @FXML
+    private TextField sukunimi;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //Hakee maakunnat tietokannasta
+<span class="nc" id="L50">        maakunnat = kone.getAsuinalueet();</span>
+<span class="nc" id="L51">        asetaMaakunnat(maakunnat);</span>
+<span class="nc" id="L52">        maakuntaNappi.getStylesheets().add(&quot;/amkf/style.css&quot;);</span>
+<span class="nc" id="L53">    }</span>
+
+    /**Syöttää käyttäjän tiedot tietokantaan ja avaa seuraavan ikkunan*/
+    @FXML
+    public void haeNappula(ActionEvent event) throws IOException {
+        
+        //Hakee etunimi ja sukunimi kentistä tiedot ja asettaa ne Käyttäjä luokkaan
+<span class="nc" id="L60">        kauttaja.setNimi(etunimi.getText() + &quot; &quot; + sukunimi.getText());</span>
+<span class="nc" id="L61">        System.out.println(&quot;Käyttäjän nimi: &quot; + kauttaja.getNimi());</span>
+
+        //Seuraavan scenen lataus
+<span class="nc" id="L64">        Node node = (Node) event.getSource();</span>
+<span class="nc" id="L65">        Stage stage = (Stage) node.getScene().getWindow();</span>
+<span class="nc" id="L66">        Parent root = FXMLLoader.load(getClass().getResource(&quot;/amkf/indexMusta.fxml&quot;));</span>
+<span class="nc" id="L67">        Scene scene = new Scene(root);</span>
+<span class="nc" id="L68">        stage.setScene(scene);</span>
+<span class="nc" id="L69">        System.out.println(&quot;Scene vaihdettu&quot;);</span>
+        
+<span class="nc" id="L71">        kone.sulje();</span>
+<span class="nc" id="L72">        System.out.println(&quot;Tietokantayhteys suljettu&quot;);</span>
+<span class="nc" id="L73">    }</span>
+
+    
+    //Asettaa tietokannasta haetut maakunnat valikkoon
+    /**Asettaa tietokannasta haetut maakunnat valikkoon*/
+    public void asetaMaakunnat(String[] kunnat) {
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for (int i = 0; i &lt; kunnat.length; i++) {</span>
+<span class="nc" id="L80">            MenuItem item = new MenuItem(kunnat[i]);</span>
+<span class="nc" id="L81">            item.getStyleClass().add(&quot;menuItem&quot;);</span>
+<span class="nc" id="L82">            item.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</span>
+                public void handle(ActionEvent e) {
+<span class="nc" id="L84">                    kauttaja.setAsuinalue(item.getText());</span>
+<span class="nc" id="L85">                    maakuntaNappi.setText(item.getText());</span>
+<span class="nc" id="L86">                    System.out.println(&quot;Käyttäjän maakunta: &quot; + kauttaja.getAsuinalue());</span>
+<span class="nc" id="L87">                }</span>
+            });
+<span class="nc" id="L89">            maakuntaNappi.getItems().add(item);</span>
+        }
+<span class="nc" id="L91">    }</span>
+
+    @FXML
+    public javafx.scene.control.Button closeButton;
+
+    /**Sulkee ohjelman*/
+    @FXML
+    public void closeButtonAction() {
+        // get a handle to the stage
+<span class="nc" id="L100">        Stage stage = (Stage) closeButton.getScene().getWindow();</span>
+        // do what you have to do
+<span class="nc" id="L102">        stage.close();</span>
+<span class="nc" id="L103">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -1,0 +1,93 @@
+.button{
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-text-fill: #1e1d1f;
+    -fx-font: 18px "Frank Ruhl Libre";
+    -fx-pref-height: 53.0px;
+    -fx-pref-width: 265.0px;
+   
+}
+
+.button:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, #cecece;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: #1e1d1f;
+}
+
+.sammuta {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-text-fill: #1e1d1f;
+    -fx-font: 18px "Frank Ruhl Libre";
+    -fx-pref-height: 50.0px;
+    -fx-pref-width: 100.0px;
+}
+
+.sammuta:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, #cecece;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: #1e1d1f;
+}
+
+.BorderPane{
+    -fx-background-color: #1e1d1f;
+    -fx-font: 24px "Frank Ruhl Libre";
+    -fx-text-fill: #1e1d1f;
+}
+
+.viiva{
+    -fx-background-color: white;
+}
+
+.panepane{
+    -fx-background-color: white;
+}
+
+.AnchorPane{
+    -fx-background-color: #1e1d1f;
+    -fx-font: 24px "Frank Ruhl Libre";
+    -fx-text-fill: #1e1d1f;
+}
+
+.menuBar{
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-text-fill: #1e1d1f;
+    -fx-font: 18px "Frank Ruhl Libre";
+}
+
+.coBut {
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+     -fx-font: 1px "Frank Ruhl Libre";
+}
+
+.scroll-pane {
+    -fx-background-color: white;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #1e1d1f;
+    -fx-background-radius: 5em;
+}

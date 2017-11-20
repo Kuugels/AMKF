@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+Luokka, josta saa string-taulukkoina tietoa tietokannasta
+*/
 package model;
 
 
@@ -16,6 +14,9 @@ public class AMKFKone implements AMKFKone_IF {
     private Koulutus[] koulutukset;
     private Asuinalue[] asuinalueet;
     
+    /**
+     * Haetaan tietokannasta kaikki koulutukset. Palauttaa string-taulukon
+     */
     @Override
     public String[] getKoulutukset(){
         ArrayList<String> koulutusTaul = new ArrayList();
@@ -28,6 +29,10 @@ public class AMKFKone implements AMKFKone_IF {
         return koulutusStrTaul;
     }
     
+    /**Antaa string-taulukkona tietyn määrän eniten pisteitä saaneita koulutuksia
+    Parametrinä annetaan määrä, kuinka monta parasta koulutusta halutaan.
+    * @param määrä Annetaan lukumäärä, montako koulutusta halutaan.
+    */
     @Override
     public String[] getTopKoulutukset(int määrä){
         Koulutus[] topKoulutukset = dao.getTopKoulutukset(määrä);
@@ -38,11 +43,24 @@ public class AMKFKone implements AMKFKone_IF {
         return topKoul;
     }
     
+    /**Lisätään tietty määrä pisteitä koulutuksiin, jossa on tietty tagi
+     * 
+     * @param pisteet montako pistettä annetaan.
+     * @param tagi mille tagille pisteet annetaan.
+     */
     @Override
     public void lisääPisteitä(int pisteet, String tagi){
         dao.lisääPisteitä(pisteet, tagi);
     }
     
+    public void resetPisteet(){
+        dao.resetAllPisteet();
+    }
+    
+    /**
+     * 
+     * @return palauttaa string-taulukon kaikista asuinalueista
+     */
     @Override
     public String[] getAsuinalueet(){
         ArrayList<String> alueTaul = new ArrayList();
@@ -53,6 +71,14 @@ public class AMKFKone implements AMKFKone_IF {
         }
         String[] alueStrTaul = alueTaul.toArray(new String[alueTaul.size()]);
         return alueStrTaul;
+    }
+    
+    /**
+     * Suljetaan tietokantayhteys
+     */
+    @Override
+    public void sulje(){
+        dao.sulje();
     }
     
 }

@@ -33,7 +33,7 @@
     -fx-text-alignment: center;
 }
 
-.menuItem{
+.menuItem {
     -fx-background-color: white;
     -fx-pref-height: 28px;
     -fx-pref-width: 300px;
@@ -41,8 +41,8 @@
     -fx-text-fill: #1e1d1f;
 }
 
-.menuItem .label .text{
-    -fx-text-alignment:center;
+.label-menuItem .label{
+      -fx-text-alignment:center; 
 }
 
 .menuItem:focused  {
@@ -80,6 +80,6 @@
 }
 
 .otsikko{
-    -fx-font: 96px "Cinzel Black";
+    -fx-font: 70px "Cinzel Black";
     -fx-text-fill: #1e1d1f;
 }

@@ -13,12 +13,12 @@
 
 <AnchorPane id="AnchorPane" prefWidth="745.0" styleClass="AnchorPane" stylesheets="@kysely.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="amkf.FXMLDocumentController">
    <children>
-      <Text layoutX="329.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kysely" AnchorPane.topAnchor="-0.056640625">
+      <Text layoutX="241.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="otsikko" text="Kysely" AnchorPane.topAnchor="5.029998779296875">
          <font>
             <Font size="26.0" />
          </font>
       </Text>
-      <GridPane layoutX="32.0" layoutY="100.0" prefWidth="600.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="47.0">
+      <GridPane layoutX="32.0" layoutY="100.0" prefWidth="600.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="10.0" prefWidth="368.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="342.0" minWidth="10.0" prefWidth="327.0" />
@@ -206,6 +206,6 @@
          
             
       </GridPane>
-      <Button layoutX="223.0" layoutY="1178.0" mnemonicParsing="false" text="Valmis!" />
+      <Button layoutX="223.0" layoutY="1215.0" mnemonicParsing="false" text="Valmis!" />
    </children>
 </AnchorPane>
