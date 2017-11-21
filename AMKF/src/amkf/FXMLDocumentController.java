@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Käyttäjä;
 import model.AMKFKone;
@@ -51,9 +52,56 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button changeLanguage;
 
+    //Kyselyn valmis-button
     @FXML
     Button kyselyValmis;
-
+    
+    //Kysymykset
+    @FXML
+    private Text q1;
+    @FXML
+    private Text q2;
+    @FXML
+    private Text q3;
+    @FXML
+    private Text q4;
+    @FXML
+    private Text q5;
+    @FXML
+    private Text q6;
+    @FXML
+    private Text q7;
+    @FXML
+    private Text q8;
+    @FXML
+    private Text q9;
+    @FXML
+    private Text q10;
+    @FXML
+    private Text q11;
+    @FXML
+    private Text q12;
+    @FXML
+    private Text q13;
+    @FXML
+    private Text q14;
+    @FXML
+    private Text q15;
+    @FXML
+    private Text q16;
+    @FXML
+    private Text q17;
+    @FXML
+    private Text q18;
+    @FXML
+    private Text q19;
+    @FXML
+    private Text q20;
+    @FXML
+    private Text q21;
+    @FXML
+    private Text q22;
+    
     @FXML
     MenuButton kys1;
     @FXML
@@ -268,6 +316,28 @@ public class FXMLDocumentController implements Initializable {
         kyselyBtn.setText(messages.getString("questions"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
+        q1.setText(messages.getString("q1"));
+        q2.setText(messages.getString("q2"));
+        q3.setText(messages.getString("q3"));
+        q4.setText(messages.getString("q4"));
+        q5.setText(messages.getString("q5"));
+        q6.setText(messages.getString("q6"));
+        q7.setText(messages.getString("q7"));
+        q8.setText(messages.getString("q8"));
+        q9.setText(messages.getString("q9"));
+        q10.setText(messages.getString("q10"));
+        q11.setText(messages.getString("q11"));
+        q12.setText(messages.getString("q12"));
+        q13.setText(messages.getString("q13"));
+        q14.setText(messages.getString("q14"));
+        q15.setText(messages.getString("q15"));
+        q16.setText(messages.getString("q16"));
+        q17.setText(messages.getString("q17"));
+        q18.setText(messages.getString("q18"));
+        q19.setText(messages.getString("q19"));
+        q20.setText(messages.getString("q20"));
+        q21.setText(messages.getString("q21"));
+        q22.setText(messages.getString("q22"));
     }
 
     public void kysOnAction() {
