@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.AMKFKone;
 import model.Käyttäjä;
+import model.LanguageSelection;
 
 /**
  * FXML Controller class
@@ -62,14 +63,18 @@ public class LoginController implements Initializable {
     public javafx.scene.control.Button closeButton;
     
     String lang;
+    LanguageSelection languageSelection;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        languageSelection = LanguageSelection.getInstance();
+        
         //Kielipaketin lataus
         lang = "FI";
         locale = new Locale("fi", "FI");
         eLocale = new Locale("et", "EE");
-        messages = ResourceBundle.getBundle("Controller.MessagesBundle", locale);
+        messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
         
         //Hakee maakunnat tietokannasta
         maakunnat = kone.getAsuinalueet();
@@ -103,6 +108,30 @@ public class LoginController implements Initializable {
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
     }
+    
+        @FXML
+    public void eeLan() {
+        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
+        Locale.setDefault(eLocale);
+        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        updateGUI();
+    }
+
+    @FXML
+    public void fiLan() {
+        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
+        Locale.setDefault(locale);
+        messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
+        updateGUI();
+    }
+/*
+    @FXML
+    public void gbLan() {
+        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
+        Locale.setDefault(eLocale);
+        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        updateGUI();
+    }*/
 
     //Asettaa tietokannasta haetut maakunnat valikkoon
     /**Asettaa tietokannasta haetut maakunnat valikkoon
@@ -148,8 +177,9 @@ public class LoginController implements Initializable {
         lastname.setText(messages.getString("lastname"));
         haeButton.setText(messages.getString("submit"));
         closeButton.setText(messages.getString("shutdown"));
-        changeLanguage.setText(messages.getString("language"));
     }
+    
+    
     
 
     /**Sulkee ohjelman*/

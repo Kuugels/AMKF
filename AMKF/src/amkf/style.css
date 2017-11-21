@@ -42,7 +42,7 @@
 }
 
 .label-menuItem .label{
-      -fx-text-alignment:center; 
+    -fx-text-alignment:center; 
 }
 
 .menuItem:focused  {
@@ -82,4 +82,31 @@
 .otsikko{
     -fx-font: 70px "Cinzel Black";
     -fx-text-fill: #1e1d1f;
+}
+
+
+
+
+.ee{
+    -fx-border-color: #1e1d1f;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+
+.fi{
+    -fx-border-color: #1e1d1f;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+
+.gb{
+    -fx-border-color: #1e1d1f;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+
+.reunatlippuun{
+    -fx-border-color: #1e1d1f;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
 }
