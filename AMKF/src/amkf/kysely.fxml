@@ -48,28 +48,28 @@
             <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Oletko matemaattisesti lahjakas? " wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Label text="Oletko kielellisesti lahjakas?" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Label text="Koetko taidealat tärkeäksi? " GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Label text="Oletko mielelläsi ihmisten kanssa tekemisissä? " GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Haaveiletko työstä markkinoinnin tai mainostamisen parissa? " textAlignment="CENTER" wrappingWidth="350" GridPane.rowIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö muiden ihmisten auttamisesta? " GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Haluatko tehdä töitä lasten ja nuorten parissa? " GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko urheilu ja liikunta sinulle tärkeää? " GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko käytännöllinen ja kätevä käsistäsi? " GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tulevatko ystäväsi usein pyytämään sinulta apua ja neuvoa? " textAlignment="CENTER" wrappingWidth="350" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö esiintymisestä? " GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko valmis matkustelemaan työsi puolesta? " GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö ruoanlaitosta? " GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö teknisten asioiden parissa puuhailusta ja uusien laitteiden keksimisestä? " textAlignment="CENTER" wrappingWidth="350" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko luonnontieteet lähellä sydäntäsi? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="14" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kiinnostaako sinua autot ja ajoneuvotekniikka?" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="15" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vietätkö paljon aikaa tietokoneella? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="16" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö rakentamisesta ja arkkitehtuurista? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko sujuva puhumaan ja haaveilet myyntityöstä? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="18" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko pikkutarkka? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="19" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko ympäristöasiat lähellä sydäntäsi? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="20" GridPane.valignment="CENTER" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko johtajatyyppiä? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="CENTER" />
+            <Label fx:id="q1" text="Oletko matemaattisesti lahjakas? " wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="q2" text="Oletko kielellisesti lahjakas?" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Label fx:id="q3" text="Koetko taidealat tärkeäksi? " GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label fx:id="q4" text="Oletko mielelläsi ihmisten kanssa tekemisissä? " GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Text fx:id="q5" strokeType="OUTSIDE" strokeWidth="0.0" text="Haaveiletko työstä markkinoinnin tai mainostamisen parissa? " textAlignment="CENTER" wrappingWidth="350" GridPane.rowIndex="4" />
+            <Text fx:id="q6" strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö muiden ihmisten auttamisesta? " GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <Text fx:id="q7" strokeType="OUTSIDE" strokeWidth="0.0" text="Haluatko tehdä töitä lasten ja nuorten parissa? " GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <Text fx:id="q8" strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko urheilu ja liikunta sinulle tärkeää? " GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
+            <Text fx:id="q9" strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko käytännöllinen ja kätevä käsistäsi? " GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <Text fx:id="q10" strokeType="OUTSIDE" strokeWidth="0.0" text="Tulevatko ystäväsi usein pyytämään sinulta apua ja neuvoa? " textAlignment="CENTER" wrappingWidth="350" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+            <Text fx:id="q11" strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö esiintymisestä? " GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+            <Text fx:id="q12" strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko valmis matkustelemaan työsi puolesta? " GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
+            <Text fx:id="q13" strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö ruoanlaitosta? " GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
+            <Text fx:id="q14" strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö teknisten asioiden parissa puuhailusta ja uusien laitteiden keksimisestä? " textAlignment="CENTER" wrappingWidth="350" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
+            <Text fx:id="q15" strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko luonnontieteet lähellä sydäntäsi? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="14" GridPane.valignment="CENTER" />
+            <Text fx:id="q16" strokeType="OUTSIDE" strokeWidth="0.0" text="Kiinnostaako sinua autot ja ajoneuvotekniikka?" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="15" GridPane.valignment="CENTER" />
+            <Text fx:id="q17" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietätkö paljon aikaa tietokoneella? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="16" GridPane.valignment="CENTER" />
+            <Text fx:id="q18" strokeType="OUTSIDE" strokeWidth="0.0" text="Pidätkö rakentamisesta ja arkkitehtuurista? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="17" GridPane.valignment="CENTER" />
+            <Text fx:id="q19" strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko sujuva puhumaan ja haaveilet myyntityöstä? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="18" GridPane.valignment="CENTER" />
+            <Text fx:id="q20" strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko pikkutarkka? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="19" GridPane.valignment="CENTER" />
+            <Text fx:id="q21" strokeType="OUTSIDE" strokeWidth="0.0" text="Ovatko ympäristöasiat lähellä sydäntäsi? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="20" GridPane.valignment="CENTER" />
+            <Text fx:id="q22" strokeType="OUTSIDE" strokeWidth="0.0" text="Oletko johtajatyyppiä? " textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="CENTER" />
             <MenuButton mnemonicParsing="false" styleClass="menuButton" text="Valitse" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
               <items>
                 <MenuItem mnemonicParsing="false" styleClass="menuItem" text="Kyllä" />
@@ -206,6 +206,6 @@
          
             
       </GridPane>
-      <Button layoutX="223.0" layoutY="1215.0" mnemonicParsing="false" text="Valmis!" />
+      <Button fx:id="ready" layoutX="223.0" layoutY="1215.0" mnemonicParsing="false" text="Valmis!" />
    </children>
 </AnchorPane>
