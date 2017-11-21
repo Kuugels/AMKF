@@ -54,7 +54,7 @@ public class FXMLDocumentController implements Initializable {
 
     //Kyselyn valmis-button
     @FXML
-    Button kyselyValmis;
+    Button ready;
     
     //Kysymykset
     @FXML
@@ -287,7 +287,7 @@ public class FXMLDocumentController implements Initializable {
 
     public void valmisOnAction() {
         System.out.println("Valmis kysely");
-        kyselyValmis.setOnAction(new EventHandler<ActionEvent>() {
+        ready.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 for (int i = 0; i < buttonit.size(); i++) {
                     lisääPisteitä(i);
