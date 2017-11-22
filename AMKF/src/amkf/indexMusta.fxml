@@ -299,7 +299,7 @@
                   <Image url="@fi.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="gb" fitHeight="23.0" fitWidth="43.0" layoutX="80.0" layoutY="440.0">
+            <ImageView fx:id="gb" fitHeight="23.0" fitWidth="43.0" layoutX="80.0" layoutY="440.0" onMouseClicked="#gbLan">
                <image>
                   <Image url="@gb.png" />
                </image>

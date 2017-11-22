@@ -38,6 +38,7 @@ public class LoginController implements Initializable {
 
     private Locale locale;
     private Locale eLocale;
+    private Locale gLocale;
     private ResourceBundle messages;
 
     private AMKFKone kone = new AMKFKone();
@@ -74,6 +75,7 @@ public class LoginController implements Initializable {
         lang = "FI";
         locale = new Locale("fi", "FI");
         eLocale = new Locale("et", "EE");
+        gLocale = new Locale("en", "GB");
         messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
 
         //Hakee maakunnat tietokannasta
@@ -129,14 +131,14 @@ public class LoginController implements Initializable {
         updateGUI();
     }
     //Vaihtaa kielen englantiin lippua painamalla
-/*
+
     @FXML
     public void gbLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(eLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        Locale.setDefault(gLocale);
+        messages = ResourceBundle.getBundle("properties.MessagesBundle_en_GB", Locale.getDefault());
         updateGUI();
-    }*/
+    }
 
     //Asettaa tietokannasta haetut maakunnat valikkoon
     /**
