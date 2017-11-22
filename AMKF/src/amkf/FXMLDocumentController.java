@@ -55,7 +55,7 @@ public class FXMLDocumentController implements Initializable {
     //Kyselyn valmis-button
     @FXML
     Button ready;
-    
+
     //Kysymykset
     @FXML
     private Text q1;
@@ -101,7 +101,7 @@ public class FXMLDocumentController implements Initializable {
     private Text q21;
     @FXML
     private Text q22;
-    
+
     @FXML
     MenuButton kys1;
     @FXML
@@ -311,6 +311,7 @@ public class FXMLDocumentController implements Initializable {
         updateGUI();
     }
 
+    //Vaihtaa kielen viroon lippua painamalla
     @FXML
     public void eeLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
@@ -319,6 +320,7 @@ public class FXMLDocumentController implements Initializable {
         updateGUI();
     }
 
+    //Vaihtaa kielen suomeen lippua painamalla
     @FXML
     public void fiLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
@@ -326,6 +328,7 @@ public class FXMLDocumentController implements Initializable {
         messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
         updateGUI();
     }
+    //Vaihtaa kielen englantiin lippua painamalla
 /*
     @FXML
     public void gbLan() {
@@ -415,12 +418,12 @@ public class FXMLDocumentController implements Initializable {
             //Oletko kielellisesti lahjakas?
             case 1:
 
-                if (vastaus.equals("Kyllä")) {
+                if (vastaus.equals(messages.getString("yes"))) {
                     kone.lisääPisteitä(8, "Kielet");
                     kone.lisääPisteitä(5, "Bisnes");
                     kone.lisääPisteitä(3, "Johtaja");
                 }
-                if (vastaus.equals("Ei")) {
+                if (vastaus.equals(messages.getString("no"))) {
                     kone.lisääPisteitä(-6, "Kielet");
                     kone.lisääPisteitä(2, "Kauneus");
                     kone.lisääPisteitä(2, "Urheilullinen");
@@ -430,12 +433,12 @@ public class FXMLDocumentController implements Initializable {
             //Koetko taidealat tärkeäksi?
             case 2:
 
-                if (vastaus.equals("Kyllä")) {
+                if (vastaus.equals(messages.getString("yes"))) {
                     kone.lisääPisteitä(5, "Taiteellinen");
                     kone.lisääPisteitä(3, "Arkkitehti");
                     kone.lisääPisteitä(3, "Musiikki");
                 }
-                if (vastaus.equals("Ei")) {
+                if (vastaus.equals(messages.getString("no"))) {
                     kone.lisääPisteitä(4, "Kaytannollinen");
                     kone.lisääPisteitä(2, "Urheilullinen");
                 }
@@ -443,10 +446,10 @@ public class FXMLDocumentController implements Initializable {
             //Oletko mielelläsi ihmisten kanssa tekemisissä?
             case 3:
 
-                if (vastaus.equals("Kyllä")) {
+                if (vastaus.equals(messages.getString("yes"))) {
                     kone.lisääPisteitä(8, "Ihmislaheinen");
                 }
-                if (vastaus.equals("Ei")) {
+                if (vastaus.equals(messages.getString("no"))) {
                     kone.lisääPisteitä(-8, "Ihmislaheinen");
                 }
                 break;

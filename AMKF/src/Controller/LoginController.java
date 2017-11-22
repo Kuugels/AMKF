@@ -35,7 +35,7 @@ import model.LanguageSelection;
 public class LoginController implements Initializable {
 
     private String[] maakunnat;
-    
+
     private Locale locale;
     private Locale eLocale;
     private ResourceBundle messages;
@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
     private TextField etunimi;
     @FXML
     private TextField sukunimi;
-    
+
     @FXML
     private Text firstname;
     @FXML
@@ -58,41 +58,43 @@ public class LoginController implements Initializable {
     private Button haeButton;
     @FXML
     private Button changeLanguage;
-    
+
     @FXML
     public javafx.scene.control.Button closeButton;
-    
+
     String lang;
     LanguageSelection languageSelection;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         languageSelection = LanguageSelection.getInstance();
-        
+
         //Kielipaketin lataus
         lang = "FI";
         locale = new Locale("fi", "FI");
         eLocale = new Locale("et", "EE");
         messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
-        
+
         //Hakee maakunnat tietokannasta
         maakunnat = kone.getAsuinalueet();
         asetaMaakunnat(maakunnat);
         maakuntaNappi.getStylesheets().add("/amkf/style.css");
-        
+
         //Kieli jutut
         updateGUI();
-        
+
     }
 
-    /**Syöttää käyttäjän tiedot tietokantaan ja avaa seuraavan ikkunan
-    * @param event ebin event
-    * @throws IOException tullee jos eei toemi
-    */
+    /**
+     * Syöttää käyttäjän tiedot tietokantaan ja avaa seuraavan ikkunan
+     *
+     * @param event ebin event
+     * @throws IOException tullee jos eei toemi
+     */
     @FXML
     public void haeNappula(ActionEvent event) throws IOException {
-        
+
         //Hakee etunimi ja sukunimi kentistä tiedot ja asettaa ne Käyttäjä luokkaan
         kauttaja.setNimi(etunimi.getText() + " " + sukunimi.getText());
         System.out.println("Käyttäjän nimi: " + kauttaja.getNimi());
@@ -104,12 +106,13 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         System.out.println("Scene vaihdettu");
-        
+
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
     }
-    
-        @FXML
+    //Vaihtaa kielen viroon lippua painamalla
+
+    @FXML
     public void eeLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
         Locale.setDefault(eLocale);
@@ -117,6 +120,7 @@ public class LoginController implements Initializable {
         updateGUI();
     }
 
+    //Vaihtaa kielen suomeen lippua painamalla
     @FXML
     public void fiLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
@@ -124,6 +128,7 @@ public class LoginController implements Initializable {
         messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
         updateGUI();
     }
+    //Vaihtaa kielen englantiin lippua painamalla
 /*
     @FXML
     public void gbLan() {
@@ -134,9 +139,11 @@ public class LoginController implements Initializable {
     }*/
 
     //Asettaa tietokannasta haetut maakunnat valikkoon
-    /**Asettaa tietokannasta haetut maakunnat valikkoon
-    * @param kunnat Tietokannasta haetut maakunnat String taulukossa
-    */
+    /**
+     * Asettaa tietokannasta haetut maakunnat valikkoon
+     *
+     * @param kunnat Tietokannasta haetut maakunnat String taulukossa
+     */
     public void asetaMaakunnat(String[] kunnat) {
         for (int i = 0; i < kunnat.length; i++) {
             MenuItem item = new MenuItem(kunnat[i]);
@@ -152,7 +159,9 @@ public class LoginController implements Initializable {
         }
     }
 
-    /**Vaihtaa ohjelman kieltä*/
+    /**
+     * Vaihtaa ohjelman kieltä
+     */
     @FXML
     public void language() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
@@ -160,14 +169,14 @@ public class LoginController implements Initializable {
             Locale.setDefault(eLocale);
             messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
             lang = "EE";
-        }else if (lang.equals("EE")) {
+        } else if (lang.equals("EE")) {
             Locale.setDefault(locale);
             messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
             lang = "FI";
         }
         updateGUI();
     }
-    
+
     /**
      * Päivittää käyttöliittymän
      */
@@ -178,11 +187,10 @@ public class LoginController implements Initializable {
         haeButton.setText(messages.getString("submit"));
         closeButton.setText(messages.getString("shutdown"));
     }
-    
-    
-    
 
-    /**Sulkee ohjelman*/
+    /**
+     * Sulkee ohjelman
+     */
     @FXML
     public void closeButtonAction() {
         // get a handle to the stage
