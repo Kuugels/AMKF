@@ -149,6 +149,30 @@ public class HibisDB implements HibisDB_IF {
         return asAlueLista;
     }
     
+    /**
+     * 
+     * @param id parametrinä annetaan halutun koulutuksen id:n
+     * @return palauttaa Koulutus-olion
+     */
+    
+    public Koulutus readKoulutus(int id){
+        Koulutus koulutus = new Koulutus();
+        try {
+            istunto = istuntotehdas.openSession();
+            istunto.beginTransaction();
+            istunto.load(koulutus, id);
+            istunto.getTransaction().commit();
+
+        } catch (Exception e) {
+            if (transaktio != null) {
+                transaktio.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+        }
+        return koulutus;
+    }
     
     /**
      * Lisätään Koulutus-tauluun pisteet-columniin pisteitä.

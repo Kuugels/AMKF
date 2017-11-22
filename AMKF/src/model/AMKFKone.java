@@ -29,6 +29,24 @@ public class AMKFKone implements AMKFKone_IF {
         return koulutusStrTaul;
     }
     
+    
+    /**
+     * 
+     * @param koulutusNimi Annetaan parametrina koulutuksen nimi, josta halutaan kuvaus
+     * @return palautetaan kuvaus
+     */
+    public String getKuvaus(String koulutusNimi){
+        koulutukset = dao.readKoulutukset();
+        for(int i = 0; i < koulutukset.length; i++){
+            if(koulutukset[i].getNimi().equals(koulutusNimi)){
+                return koulutukset[i].getKuvaus();
+            }
+        }
+        System.out.println("AMKFKONE.getKuvaus() ei löytänyt koulutusta");
+        return "";
+        
+    }
+    
     /**Antaa string-taulukkona tietyn määrän eniten pisteitä saaneita koulutuksia
     Parametrinä annetaan määrä, kuinka monta parasta koulutusta halutaan.
     * @param määrä Annetaan lukumäärä, montako koulutusta halutaan.
