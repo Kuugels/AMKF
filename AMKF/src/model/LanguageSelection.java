@@ -10,10 +10,11 @@ import java.util.ResourceBundle;
 
 /**
  * Sisältää tiedon käytössä olevasta tiedosta
+ *
  * @author Samuli Käkönen
  */
 public class LanguageSelection {
-    
+
     private static ResourceBundle messages;
 
     /**
@@ -23,7 +24,7 @@ public class LanguageSelection {
         Locale.setDefault(new Locale("et", "EE"));
         messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
     }
-    
+
     /**
      * Vaihtaa kielen viroksi
      */
@@ -31,7 +32,7 @@ public class LanguageSelection {
         Locale.setDefault(new Locale("fi", "FI"));
         messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
     }
-    
+
     /**
      * Vaihtaa kielen englanniksi
      */
@@ -39,13 +40,14 @@ public class LanguageSelection {
         Locale.setDefault(new Locale("en", "GB"));
         messages = ResourceBundle.getBundle("properties.MessagesBundle_en_GB", Locale.getDefault());
     }
-    
+
     /**
      * Palauttaa resourceBundlen
-     * @return 
+     *
+     * @return
      */
     public ResourceBundle resourceBundle() {
         return messages;
     }
-    
+
 }

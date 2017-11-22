@@ -8,9 +8,7 @@ package amkf;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import static javafx.application.Application.setUserAgentStylesheet;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,10 +19,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Käyttäjä;
@@ -33,6 +29,7 @@ import model.LanguageSelection;
 
 /**
  * Kontrolleri kysely sivulle
+ *
  * @author Samuli Käkönen
  */
 public class FXMLDocumentController implements Initializable {
@@ -150,7 +147,7 @@ public class FXMLDocumentController implements Initializable {
     private Käyttäjä kauttaja = new Käyttäjä();
 
     String lang;
-    
+
     private LanguageSelection languageSelection;
 
     /*
@@ -159,7 +156,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         //Kielipaketin lataus
         languageSelection = new LanguageSelection();
         messages = languageSelection.resourceBundle();
@@ -320,6 +317,7 @@ public class FXMLDocumentController implements Initializable {
         messages = languageSelection.resourceBundle();
         updateGUI();
     }
+
     /**
      * Vaihtaa kielen englantiin
      */
@@ -331,7 +329,6 @@ public class FXMLDocumentController implements Initializable {
         updateGUI();
     }
 
-    
     /**
      * Päivittää käyttöliittymän
      */
@@ -363,8 +360,7 @@ public class FXMLDocumentController implements Initializable {
         q21.setText(messages.getString("q21"));
         q22.setText(messages.getString("q22"));
         kysOnAction();
-        
-        
+
         ObservableList<MenuItem> items;
         for (int i = 0; i < buttonit.size(); i++) {
             buttonit.get(i).setText(messages.getString("choose"));

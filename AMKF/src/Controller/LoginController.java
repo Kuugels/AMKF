@@ -7,7 +7,6 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,8 +27,8 @@ import model.Käyttäjä;
 import model.LanguageSelection;
 
 /**
- * FXML Controller class
- * Kontrolleri käyttäjän luonti sivulle
+ * FXML Controller class Kontrolleri käyttäjän luonti sivulle
+ *
  * @author Samuli Käkönen
  */
 public class LoginController implements Initializable {
@@ -58,8 +57,7 @@ public class LoginController implements Initializable {
     @FXML
     public javafx.scene.control.Button closeButton;
 
-    String lang;
-    LanguageSelection languageSelection;
+    private LanguageSelection languageSelection;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,7 +101,7 @@ public class LoginController implements Initializable {
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
     }
-    
+
     /**
      * Vaihtaa kielen viroksi
      */
@@ -125,7 +123,7 @@ public class LoginController implements Initializable {
         messages = languageSelection.resourceBundle();
         updateGUI();
     }
-    
+
     /**
      * Vaihtaa kielen englanniksi
      */
