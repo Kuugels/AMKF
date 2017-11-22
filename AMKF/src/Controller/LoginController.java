@@ -29,16 +29,13 @@ import model.LanguageSelection;
 
 /**
  * FXML Controller class
- *
+ * Kontrolleri käyttäjän luonti sivulle
  * @author Samuli Käkönen
  */
 public class LoginController implements Initializable {
 
     private String[] maakunnat;
 
-    private Locale locale;
-    private Locale eLocale;
-    private Locale gLocale;
     private ResourceBundle messages;
 
     private AMKFKone kone = new AMKFKone();
@@ -57,8 +54,6 @@ public class LoginController implements Initializable {
     private Text lastname;
     @FXML
     private Button haeButton;
-    @FXML
-    private Button changeLanguage;
 
     @FXML
     public javafx.scene.control.Button closeButton;
@@ -69,21 +64,17 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        languageSelection = LanguageSelection.getInstance();
-
         //Kielipaketin lataus
-        lang = "FI";
-        locale = new Locale("fi", "FI");
-        eLocale = new Locale("et", "EE");
-        gLocale = new Locale("en", "GB");
-        messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
+        languageSelection = new LanguageSelection();
+        languageSelection.langFI();
+        messages = languageSelection.resourceBundle();
 
         //Hakee maakunnat tietokannasta
         maakunnat = kone.getAsuinalueet();
         asetaMaakunnat(maakunnat);
         maakuntaNappi.getStylesheets().add("/amkf/style.css");
 
-        //Kieli jutut
+        //GUI päivitys
         updateGUI();
 
     }
@@ -112,35 +103,40 @@ public class LoginController implements Initializable {
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
     }
-    //Vaihtaa kielen viroon lippua painamalla
-
+    
+    /**
+     * Vaihtaa kielen viroksi
+     */
     @FXML
     public void eeLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(eLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        languageSelection.langEE();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
 
-    //Vaihtaa kielen suomeen lippua painamalla
+    /**
+     * Vaihtaa kielen suomeksi
+     */
     @FXML
     public void fiLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(locale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
+        languageSelection.langFI();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
-    //Vaihtaa kielen englantiin lippua painamalla
-
+    
+    /**
+     * Vaihtaa kielen englanniksi
+     */
     @FXML
     public void gbLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(gLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_en_GB", Locale.getDefault());
+        languageSelection.langGB();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
 
-    //Asettaa tietokannasta haetut maakunnat valikkoon
     /**
      * Asettaa tietokannasta haetut maakunnat valikkoon
      *
@@ -159,24 +155,6 @@ public class LoginController implements Initializable {
             });
             maakuntaNappi.getItems().add(item);
         }
-    }
-
-    /**
-     * Vaihtaa ohjelman kieltä
-     */
-    @FXML
-    public void language() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        if (lang.equals("FI")) {
-            Locale.setDefault(eLocale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
-            lang = "EE";
-        } else if (lang.equals("EE")) {
-            Locale.setDefault(locale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
-            lang = "FI";
-        }
-        updateGUI();
     }
 
     /**

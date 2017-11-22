@@ -29,16 +29,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Käyttäjä;
 import model.AMKFKone;
+import model.LanguageSelection;
 
 /**
- *
+ * Kontrolleri kysely sivulle
  * @author Samuli Käkönen
  */
 public class FXMLDocumentController implements Initializable {
 
-    private Locale locale;
-    private Locale eLocale;
-    private Locale gLocale;
     private ResourceBundle messages;
 
     @FXML
@@ -50,8 +48,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     Button pinkButton;
-    @FXML
-    private Button changeLanguage;
 
     //Kyselyn valmis-button
     @FXML
@@ -154,6 +150,8 @@ public class FXMLDocumentController implements Initializable {
     private Käyttäjä kauttaja = new Käyttäjä();
 
     String lang;
+    
+    private LanguageSelection languageSelection;
 
     /*
     @FXML
@@ -161,12 +159,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        lang = "FI";
-        locale = new Locale("fi", "FI");
-        eLocale = new Locale("et", "EE");
-        gLocale = new Locale("en", "GB");
-        messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
+        
+        //Kielipaketin lataus
+        languageSelection = new LanguageSelection();
+        messages = languageSelection.resourceBundle();
 
         kone = new AMKFKone();
         buttonit = new ArrayList<MenuButton>();
@@ -273,9 +269,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public javafx.scene.control.Button closeButton;
 
+    /**
+     * Sulkee ohjelman
+     */
     @FXML
     public void closeButtonAction() {
-
         kone.resetPisteet();
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
@@ -287,6 +285,9 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     * Lähettää täytetyn kyselyn tiedot tietokantaan ja vaihtaa sivun
+     */
     public void valmisOnAction() {
         System.out.println("Valmis kysely");
         ready.setOnAction(new EventHandler<ActionEvent>() {
@@ -298,48 +299,42 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
-    @FXML
-    public void language() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        if (lang.equals("FI")) {
-            Locale.setDefault(eLocale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
-            lang = "EE";
-        } else if (lang.equals("EE")) {
-            Locale.setDefault(locale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
-            lang = "FI";
-        }
-        updateGUI();
-    }
-
-    //Vaihtaa kielen viroon lippua painamalla
+    /**
+     * Vaihtaa kielen viroksi
+     */
     @FXML
     public void eeLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(eLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        languageSelection.langEE();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
 
-    //Vaihtaa kielen suomeen lippua painamalla
+    /**
+     * Vaihtaa kielen suomeksi
+     */
     @FXML
     public void fiLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(locale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
+        languageSelection.langFI();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
-    //Vaihtaa kielen englantiin lippua painamalla
-
+    /**
+     * Vaihtaa kielen englantiin
+     */
     @FXML
     public void gbLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(gLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_en_GB", Locale.getDefault());
+        languageSelection.langGB();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
 
+    
+    /**
+     * Päivittää käyttöliittymän
+     */
     public void updateGUI() {
         closeButton.setText(messages.getString("shutdown"));
         kyselyBtn.setText(messages.getString("questions"));
