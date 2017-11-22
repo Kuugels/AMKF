@@ -161,23 +161,6 @@ public class LoginController implements Initializable {
         }
     }
 
-    /**
-     * Vaihtaa ohjelman kieltä
-     */
-    @FXML
-    public void language() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        if (lang.equals("FI")) {
-            Locale.setDefault(eLocale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
-            lang = "EE";
-        } else if (lang.equals("EE")) {
-            Locale.setDefault(locale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
-            lang = "FI";
-        }
-        updateGUI();
-    }
 
     /**
      * Päivittää käyttöliittymän
