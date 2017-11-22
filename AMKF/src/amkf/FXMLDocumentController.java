@@ -365,6 +365,23 @@ public class FXMLDocumentController implements Initializable {
         q20.setText(messages.getString("q20"));
         q21.setText(messages.getString("q21"));
         q22.setText(messages.getString("q22"));
+        kysOnAction();
+        
+        
+        ObservableList<MenuItem> items;
+        for (int i = 0; i < buttonit.size(); i++) {
+            buttonit.get(i).setText(messages.getString("choose"));
+            MenuButton käsiteltävä = buttonit.get(i);
+            items = käsiteltävä.getItems();
+            for (int j = 0; j < items.size(); j++) {
+                if (j == 0) {
+                    items.get(j).setText(messages.getString("yes"));
+                } else {
+                    items.get(j).setText(messages.getString("no"));
+                }
+
+            }
+        }
     }
 
     public void kysOnAction() {
