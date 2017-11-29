@@ -28,6 +28,17 @@ public class Koulutus {
     
     @Column(name="tagit")
     private String tagit;
+    
+    @Column(name="kuvaus")
+    private String kuvaus;
+    
+    public String getKuvaus(){
+        return kuvaus;
+    }
+    
+    public void setKuvaus(String kuvaus){
+        this.kuvaus = kuvaus;
+    }
 
     public String getNimi() {
         return nimi;
