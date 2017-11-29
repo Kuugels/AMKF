@@ -8,6 +8,7 @@ package Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import model.AMKFKone;
 
 /**
  * FXML Controller class
@@ -15,6 +16,8 @@ import javafx.fxml.Initializable;
  * @author Samuli Käkönen
  */
 public class KoulutuksetController implements Initializable {
+    
+    private AMKFKone kone;
 
     /**
      * Initializes the controller class.
@@ -22,6 +25,14 @@ public class KoulutuksetController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        int koulutusmäärä = 5;
+        String[] topKoulutukset = kone.getTopKoulutukset(koulutusmäärä);
+        String[] kuvaukset = new String[topKoulutukset.length];
+        
+        for(int i = 0; i<topKoulutukset.length; i++){
+            kuvaukset[i] = kone.getKuvaus(topKoulutukset[i]);
+        }
+        
     }    
     
 }
