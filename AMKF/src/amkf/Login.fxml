@@ -28,7 +28,7 @@
                   <Image url="@fi.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="gb" fitHeight="23.0" fitWidth="43.0" layoutX="589.0" layoutY="535.0" styleClass="gb">
+            <ImageView fx:id="gb" fitHeight="23.0" fitWidth="43.0" layoutX="589.0" layoutY="535.0" onMouseClicked="#gbLan" styleClass="gb">
                <image>
                   <Image url="@gb.png" />
                </image>
@@ -40,9 +40,9 @@
             </ImageView>
          </children>
       </Pane>
-      <Text fx:id="firstname" layoutX="329.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etunimi" />
+      <Text fx:id="firstname" layoutX="316.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etunimi" />
       <TextField fx:id="etunimi" layoutX="440.0" layoutY="310.0" />
-      <Text fx:id="lastname" layoutX="321.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sukunimi" />
+      <Text fx:id="lastname" layoutX="308.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sukunimi" />
       <TextField fx:id="sukunimi" layoutX="440.0" layoutY="373.0" />
       <ImageView fitHeight="148.0" fitWidth="1035.0" layoutX="8.0" layoutY="144.0">
          <image>

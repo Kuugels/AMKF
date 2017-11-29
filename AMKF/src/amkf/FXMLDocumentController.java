@@ -8,9 +8,7 @@ package amkf;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import static javafx.application.Application.setUserAgentStylesheet;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,23 +19,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Käyttäjä;
 import model.AMKFKone;
+import model.LanguageSelection;
 
 /**
+ * Kontrolleri kysely sivulle
  *
  * @author Samuli Käkönen
  */
 public class FXMLDocumentController implements Initializable {
 
-    private Locale locale;
-    private Locale eLocale;
     private ResourceBundle messages;
 
     @FXML
@@ -49,13 +45,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     Button pinkButton;
-    @FXML
-    private Button changeLanguage;
 
     //Kyselyn valmis-button
     @FXML
     Button ready;
-    
+
     //Kysymykset
     @FXML
     private Text q1;
@@ -101,7 +95,7 @@ public class FXMLDocumentController implements Initializable {
     private Text q21;
     @FXML
     private Text q22;
-    
+
     @FXML
     MenuButton kys1;
     @FXML
@@ -154,17 +148,18 @@ public class FXMLDocumentController implements Initializable {
 
     String lang;
 
+    private LanguageSelection languageSelection;
+
     /*
     @FXML
     MenuItem kys1k;
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        lang = "FI";
-        locale = new Locale("fi", "FI");
-        eLocale = new Locale("et", "EE");
-        messages = ResourceBundle.getBundle("properties.MessagesBundle", locale);
+
+        //Kielipaketin lataus
+        languageSelection = new LanguageSelection();
+        messages = languageSelection.resourceBundle();
 
         kone = new AMKFKone();
         buttonit = new ArrayList<MenuButton>();
@@ -271,9 +266,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public javafx.scene.control.Button closeButton;
 
+    /**
+     * Sulkee ohjelman
+     */
     @FXML
     public void closeButtonAction() {
-
         kone.resetPisteet();
         kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
@@ -285,6 +282,9 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     * Lähettää täytetyn kyselyn tiedot tietokantaan ja vaihtaa sivun
+     */
     public void valmisOnAction() {
         System.out.println("Valmis kysely");
         ready.setOnAction(new EventHandler<ActionEvent>() {
@@ -296,45 +296,42 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
-    @FXML
-    public void language() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        if (lang.equals("FI")) {
-            Locale.setDefault(eLocale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
-            lang = "EE";
-        } else if (lang.equals("EE")) {
-            Locale.setDefault(locale);
-            messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
-            lang = "FI";
-        }
-        updateGUI();
-    }
-
+    /**
+     * Vaihtaa kielen viroksi
+     */
     @FXML
     public void eeLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(eLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        languageSelection.langEE();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
 
+    /**
+     * Vaihtaa kielen suomeksi
+     */
     @FXML
     public void fiLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(locale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_fi_FI", Locale.getDefault());
+        languageSelection.langFI();
+        messages = languageSelection.resourceBundle();
         updateGUI();
     }
-/*
+
+    /**
+     * Vaihtaa kielen englantiin
+     */
     @FXML
     public void gbLan() {
         System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        Locale.setDefault(eLocale);
-        messages = ResourceBundle.getBundle("properties.MessagesBundle_ee_EST", Locale.getDefault());
+        languageSelection.langGB();
+        messages = languageSelection.resourceBundle();
         updateGUI();
-    }*/
+    }
 
+    /**
+     * Päivittää käyttöliittymän
+     */
     public void updateGUI() {
         closeButton.setText(messages.getString("shutdown"));
         kyselyBtn.setText(messages.getString("questions"));
@@ -363,8 +360,7 @@ public class FXMLDocumentController implements Initializable {
         q21.setText(messages.getString("q21"));
         q22.setText(messages.getString("q22"));
         kysOnAction();
-        
-        
+
         ObservableList<MenuItem> items;
         for (int i = 0; i < buttonit.size(); i++) {
             buttonit.get(i).setText(messages.getString("choose"));
