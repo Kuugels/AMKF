@@ -43,8 +43,8 @@ public class LanguageSelection {
 
     /**
      * Palauttaa resourceBundlen
-     *
-     * @return
+     * Bada Ping
+     * @return Palauttaa recourcebundlen
      */
     public ResourceBundle resourceBundle() {
         return messages;
