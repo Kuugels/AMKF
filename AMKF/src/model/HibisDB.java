@@ -79,6 +79,7 @@ public class HibisDB implements HibisDB_IF {
     @Override
     public Koulutus[] readKoulutukset() {
         Koulutus[] koulutusLista = null;
+        Koulutus[] uusiKoulutusLista = null;
         try {
             istunto = istuntotehdas.openSession();
             istunto.beginTransaction();
@@ -86,6 +87,7 @@ public class HibisDB implements HibisDB_IF {
             List<Koulutus> result = istunto.createQuery("from Koulutus").getResultList();
             istunto.getTransaction().commit();
             koulutusLista = result.toArray(new Koulutus[result.size()]);
+            uusiKoulutusLista = poistaDuplikaatit(koulutusLista);
 
         } catch (Exception e) {
             if (transaktio != null) {
@@ -95,7 +97,7 @@ public class HibisDB implements HibisDB_IF {
         } finally {
             istunto.close();
         }
-        return koulutusLista;
+        return uusiKoulutusLista;
     }
     
     /**
@@ -276,5 +278,27 @@ public class HibisDB implements HibisDB_IF {
         return tagit;
     }
     
+    public Koulutus[] poistaDuplikaatit(Koulutus[] kaikkiKoulutukset){
+        int end = kaikkiKoulutukset.length;
+
+        for (int i = 0; i < end; i++) {
+            for (int j = i + 1; j < end; j++) {
+                if (kaikkiKoulutukset[i].getNimi().equals(kaikkiKoulutukset[j].getNimi())) {
+                    int shiftLeft = j;
+                    for (int k = j + 1; k < end; k++, shiftLeft++) {
+                        kaikkiKoulutukset[shiftLeft] = kaikkiKoulutukset[k];
+                    }
+                    end--;
+                    j--;
+                }
+            }
+        }
+
+        Koulutus[] whitelist = new Koulutus[end];
+        for (int i = 0; i < end; i++) {
+            whitelist[i] = kaikkiKoulutukset[i];
+        }
+        return whitelist;
+    }
     
 }
