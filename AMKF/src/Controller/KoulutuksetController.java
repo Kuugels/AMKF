@@ -41,8 +41,9 @@ import model.LanguageSelection;
  * @author Samuli Käkönen
  */
 public class KoulutuksetController implements Initializable {
-
+    
     private AMKFKone kone;
+
     @FXML
     Button closeButton;
     @FXML

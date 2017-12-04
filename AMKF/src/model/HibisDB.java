@@ -68,16 +68,63 @@ public class HibisDB implements HibisDB_IF {
      * @return palauttaa Koulu-olion.
      */
     @Override
-    public Koulu readKoulu(int id){
-        return null;
+    public Koulu[] readKoulut(){
+        Koulu[] kouluLista = null;
+        try {
+            istunto = istuntotehdas.openSession();
+            istunto.beginTransaction();
+            @SuppressWarnings("unchecked")
+            List<Koulutus> result = istunto.createQuery("from Koulu").getResultList();
+            istunto.getTransaction().commit();
+            kouluLista = result.toArray(new Koulu[result.size()]);
+
+        } catch (Exception e) {
+            if (transaktio != null) {
+                transaktio.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+        }
+        return kouluLista;
     }
     
     /**
      * haetaan tietokannasta kaikki koulutuskset.
-     * @return palautetaan ne Koulutus-olion taulukkona
+     * @return palautetaan ne Koulutus-olion taulukkona (ilman nimiduplikaatteja)
      */
     @Override
     public Koulutus[] readKoulutukset() {
+        Koulutus[] koulutusLista = null;
+        Koulutus[] uusiKoulutusLista = null;
+        try {
+            istunto = istuntotehdas.openSession();
+            istunto.beginTransaction();
+            @SuppressWarnings("unchecked")
+            List<Koulutus> result = istunto.createQuery("from Koulutus").getResultList();
+            istunto.getTransaction().commit();
+            koulutusLista = result.toArray(new Koulutus[result.size()]);
+            uusiKoulutusLista = poistaDuplikaatit(koulutusLista);
+
+        } catch (Exception e) {
+            if (transaktio != null) {
+                transaktio.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+        }
+        return uusiKoulutusLista;
+    }
+    
+    /**
+     * 
+     * @return palauttaa koulutus-oliotaulukon KAIKISTA koulutuksista.
+     * (myös samannimisistä koulutuksista, joita käydään monissa eri kouluissa)
+     */
+    
+    @Override
+    public Koulutus[] readAllKoulutukset() {
         Koulutus[] koulutusLista = null;
         try {
             istunto = istuntotehdas.openSession();
@@ -276,5 +323,27 @@ public class HibisDB implements HibisDB_IF {
         return tagit;
     }
     
+    public Koulutus[] poistaDuplikaatit(Koulutus[] kaikkiKoulutukset){
+        int end = kaikkiKoulutukset.length;
+
+        for (int i = 0; i < end; i++) {
+            for (int j = i + 1; j < end; j++) {
+                if (kaikkiKoulutukset[i].getNimi().equals(kaikkiKoulutukset[j].getNimi())) {
+                    int shiftLeft = j;
+                    for (int k = j + 1; k < end; k++, shiftLeft++) {
+                        kaikkiKoulutukset[shiftLeft] = kaikkiKoulutukset[k];
+                    }
+                    end--;
+                    j--;
+                }
+            }
+        }
+
+        Koulutus[] whitelist = new Koulutus[end];
+        for (int i = 0; i < end; i++) {
+            whitelist[i] = kaikkiKoulutukset[i];
+        }
+        return whitelist;
+    }
     
 }

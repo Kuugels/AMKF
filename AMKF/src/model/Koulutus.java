@@ -32,6 +32,14 @@ public class Koulutus {
     @Column(name="kuvaus")
     private String kuvaus;
     
+    @Column(name="kouluID")
+    private int kouluID;
+
+    public int getKouluID() {
+        return kouluID;
+    }
+    
+    
     public String getKuvaus(){
         return kuvaus;
     }
