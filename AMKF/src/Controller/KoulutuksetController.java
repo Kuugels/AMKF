@@ -5,31 +5,16 @@
  */
 package Controller;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.AMKFKone;
@@ -40,10 +25,10 @@ import model.LanguageSelection;
  *
  * @author Samuli Käkönen
  */
-public class KoulutuksetController implements Initializable {
+public class KoulutuksetController extends Template implements Initializable {
     
     private AMKFKone kone;
-
+    /*
     @FXML
     Button closeButton;
     @FXML
@@ -51,7 +36,7 @@ public class KoulutuksetController implements Initializable {
     @FXML
     Button yhteystiedotBtn;
     @FXML
-    Button koulutuksetBtn;
+    Button koulutuksetBtn;*/
 
     @FXML
     BorderPane borderPane;
@@ -61,8 +46,8 @@ public class KoulutuksetController implements Initializable {
 
     String lang;
 
-    private LanguageSelection languageSelection;
-    private ResourceBundle messages;
+    /*private LanguageSelection languageSelection;
+    private ResourceBundle messages;*/
 
     private String[] topKoulutukset;
     private String[] kuvaukset;
@@ -75,15 +60,17 @@ public class KoulutuksetController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         //Kielipaketin lataus
-        languageSelection = new LanguageSelection();
-        messages = languageSelection.resourceBundle();
+        /*languageSelection = new LanguageSelection();
+        messages = languageSelection.resourceBundle();*/
 
+        initLsMe();
+        
         int koulutusmäärä = 5;
         kone = new AMKFKone();
         topKoulutukset = kone.getTopKoulutukset(koulutusmäärä);
         kuvaukset = new String[topKoulutukset.length];
 
-        updateGUI();
+        //updateGUI();
 
         for (int i = 0; i < topKoulutukset.length; i++) {
             kuvaukset[i] = kone.getKuvaus(topKoulutukset[i]);
@@ -103,11 +90,16 @@ public class KoulutuksetController implements Initializable {
      */
     private void createListOfEducations() {
         ListView list = new ListView();
+        if (messages == null) {
+            System.out.println("Messages on null");
+        }
         Button btn = new Button(messages.getString("questions"));
-        Text ed;
+        Text ed = new Text("");
+        
         
         for (int i = 0; i < topKoulutukset.length; i++) {
             ed = new Text(topKoulutukset[i] + "\n" + messages.getString("description") + ": " + kuvaukset[i]);
+            ed.setWrappingWidth(700);
             list.getItems().addAll(ed);
             list.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
@@ -116,7 +108,7 @@ public class KoulutuksetController implements Initializable {
                 }
             });
         }
-
+        
         list.getItems().add(btn);
         borderPane.setCenter(list);
         scrollPane.setContent(borderPane);
@@ -140,6 +132,7 @@ public class KoulutuksetController implements Initializable {
      * Sulkee ohjelman
      */
     @FXML
+    @Override
     public void closeButtonAction() {
         kone.resetPisteet();
         kone.sulje();
@@ -151,42 +144,9 @@ public class KoulutuksetController implements Initializable {
         stage.close();
 
     }
-
-    /**
-     * Vaihtaa kielen viroksi
-     */
-    @FXML
-    public void eeLan() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        languageSelection.langEE();
-        messages = languageSelection.resourceBundle();
-        updateGUI();
-    }
-
-    /**
-     * Vaihtaa kielen suomeksi
-     */
-    @FXML
-    public void fiLan() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        languageSelection.langFI();
-        messages = languageSelection.resourceBundle();
-        updateGUI();
-    }
-
-    /**
-     * Vaihtaa kielen englantiin
-     */
-    @FXML
-    public void gbLan() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        languageSelection.langGB();
-        messages = languageSelection.resourceBundle();
-        updateGUI();
-    }
-
+    
+    @Override
     public void updateGUI() {
-        System.out.println(messages.getString("shutdown"));
         closeButton.setText(messages.getString("shutdown"));
         kyselyBtn.setText(messages.getString("questions"));
         koulutuksetBtn.setText(messages.getString("educations"));

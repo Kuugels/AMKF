@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,7 +19,7 @@ import model.LanguageSelection;
  */
 public abstract class Template {
 
-    private AMKFKone kone;
+    private AMKFKone kone = new AMKFKone();
     
     @FXML
     Button closeButton;
@@ -29,15 +30,17 @@ public abstract class Template {
     @FXML
     Button koulutuksetBtn;
 
-    private String lang;
-    private LanguageSelection languageSelection;
-    private ResourceBundle messages;
+    public Locale locale;
+    public LanguageSelection languageSelection;
+    public ResourceBundle messages;
     
     public abstract void updateGUI();
     
-    public void init() {
+    public void initLsMe() {
         languageSelection = new LanguageSelection();
+        languageSelection.langFI(); //VÄLIAIKAINEN JUTTU
         messages = languageSelection.resourceBundle();
+        
     }
     
     /**
@@ -73,18 +76,6 @@ public abstract class Template {
         updateGUI();
     }
     
-    /**
-     * Sulkee ohjelman
-     */
-    @FXML
-    public void closeButtonAction() {
-        kone.resetPisteet();//KONETTA EI OO LUOTU NII TULEE ERRRRROR
-        kone.sulje();
-        System.out.println("Tietokantayhteys suljettu");
-        // get a handle to the stage
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        // do what you have to do
-        stage.close();
-    }
+    public abstract void closeButtonAction();
 
 }

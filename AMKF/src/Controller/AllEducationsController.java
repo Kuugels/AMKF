@@ -16,6 +16,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.AMKFKone;
 import model.LanguageSelection;
 
@@ -27,6 +28,15 @@ import model.LanguageSelection;
 public class AllEducationsController extends Template implements Initializable {
 
     AMKFKone kone;
+    
+    @FXML
+    Button closeButton;
+    @FXML
+    Button kyselyBtn;
+    @FXML
+    Button yhteystiedotBtn;
+    @FXML
+    Button koulutuksetBtn;
 
     @FXML
     private BorderPane borderPane;
@@ -49,6 +59,9 @@ public class AllEducationsController extends Template implements Initializable {
         listAllEducations();
     }
 
+    /**
+     * Creates ListView for all educations in database
+     */
     public void listAllEducations() {
         ListView list = new ListView();
         educations = kone.getKoulutukset();
@@ -68,10 +81,17 @@ public class AllEducationsController extends Template implements Initializable {
         //list.getItems().add(educations);
         borderPane.setCenter(list);
         scrollPane.setContent(borderPane);
+        
     }
     
+    /**
+     * Runs when ListView Object is clicked
+     * @param list ListViewl
+     * @param educations String array of educations in database
+     */
     private void listItemHandler(ListView list,String[] educations) {
         Text txt = (Text) list.getSelectionModel().getSelectedItem();
+        txt.setWrappingWidth(700);
         String origTxt = educations[list.getSelectionModel().getSelectedIndex()];
         if (!txt.getText().contains("Koulut:")) {
             String schools = "\nKuvaus: " + kone.getKuvaus(educations[list.getSelectionModel().getSelectedIndex()]) +  "\nKoulut:";
@@ -91,6 +111,23 @@ public class AllEducationsController extends Template implements Initializable {
         kyselyBtn.setText(messages.getString("questions"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
+    }
+
+    /**
+     * Sulkee ohjelman
+     */
+    @FXML
+    @Override
+    public void closeButtonAction() {
+        kone.resetPisteet();
+        kone.sulje();
+        System.out.println("Tietokantayhteys suljettu");
+        // get a handle to the stage
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+
+        // do what you have to do
+        stage.close();
+
     }
 
 }
