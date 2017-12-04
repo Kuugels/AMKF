@@ -12,6 +12,7 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -53,6 +55,9 @@ public class KoulutuksetController implements Initializable {
     @FXML
     BorderPane borderPane;
 
+    @FXML
+    ScrollPane scrollPane;
+
     String lang;
 
     private LanguageSelection languageSelection;
@@ -61,6 +66,8 @@ public class KoulutuksetController implements Initializable {
     String[] topKoulutukset;
     String[] kuvaukset;
 
+    Boolean alreadyListed = false;
+    
     /**
      * Initializes the controller class.
      */
@@ -90,21 +97,46 @@ public class KoulutuksetController implements Initializable {
         }
 
         createListOfEducations();
-        
+
     }
 
     /**
      * Luo listviewin ja asettaa siihen jokaisen koulutuksen
      */
-    public void createListOfEducations() {
+    private void createListOfEducations() {
         ListView list = new ListView();
-        
+        Button btn = new Button(messages.getString("questions"));
+        Text ed;
+
         for (int i = 0; i < topKoulutukset.length; i++) {
-            Text ed = new Text(topKoulutukset[i] + "\n" + messages.getString("description") + ": " + kuvaukset[i]);
+            ed = new Text(topKoulutukset[i] + "\n" + messages.getString("description") + ": " + kuvaukset[i]);
             list.getItems().addAll(ed);
+            list.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    listItemHandler(list);
+                }
+            });
         }
+
+        list.getItems().add(btn);
         borderPane.setCenter(list);
+        scrollPane.setContent(borderPane);
+    }
+
+    private void listItemHandler(ListView list) {
+        Boolean alreadyListed = false;
+        Text txt = (Text) list.getSelectionModel().getSelectedItem();
+        final String originalTxt = txt.getText();
+        if (alreadyListed) {
+            txt.setText(originalTxt);
+            alreadyListed = false;
+        }else {
+            txt.setText(txt.getText() + "\nTÄSSÄ PITÄIS OLLA KOULUT LISTATTUNA");
+            alreadyListed = true;
+        }
         
+
     }
 
     /**
@@ -163,7 +195,5 @@ public class KoulutuksetController implements Initializable {
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
     }
-    
 
 }
-
