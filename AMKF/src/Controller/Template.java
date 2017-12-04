@@ -19,18 +19,17 @@ import model.LanguageSelection;
  */
 public abstract class Template {
 
-    private AMKFKone kone = new AMKFKone();
+    public AMKFKone kone = new AMKFKone();
     
     @FXML
-    Button closeButton;
+    public Button closeButton;
     @FXML
-    Button kyselyBtn;
+    public Button kyselyBtn;
     @FXML
-    Button yhteystiedotBtn;
+    public Button yhteystiedotBtn;
     @FXML
-    Button koulutuksetBtn;
+    public Button koulutuksetBtn;
 
-    public Locale locale;
     public LanguageSelection languageSelection;
     public ResourceBundle messages;
     
@@ -38,7 +37,6 @@ public abstract class Template {
     
     public void initLsMe() {
         languageSelection = new LanguageSelection();
-        languageSelection.langFI(); //VÄLIAIKAINEN JUTTU
         messages = languageSelection.resourceBundle();
         
     }

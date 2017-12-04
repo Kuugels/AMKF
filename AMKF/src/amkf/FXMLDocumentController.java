@@ -5,6 +5,7 @@
  */
 package amkf;
 
+import Controller.Template;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,16 +35,7 @@ import model.LanguageSelection;
  *
  * @author Samuli Käkönen
  */
-public class FXMLDocumentController implements Initializable {
-
-    private ResourceBundle messages;
-
-    @FXML
-    private Button kyselyBtn;
-    @FXML
-    private Button koulutuksetBtn;
-    @FXML
-    private Button yhteystiedotBtn;
+public class FXMLDocumentController extends Template implements Initializable {
 
     @FXML
     Button pinkButton;
@@ -144,26 +136,17 @@ public class FXMLDocumentController implements Initializable {
     MenuButton kys22;
 
     ArrayList<MenuButton> buttonit;
-    private AMKFKone kone;
 
     private Käyttäjä kauttaja = new Käyttäjä();
 
     String lang;
 
-    private LanguageSelection languageSelection;
-
-    /*
-    @FXML
-    MenuItem kys1k;
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Kielipaketin lataus
-        languageSelection = new LanguageSelection();
-        messages = languageSelection.resourceBundle();
+        //Kielipaketin alustus
+        initLsMe();
 
-        kone = new AMKFKone();
         buttonit = new ArrayList<MenuButton>();
         buttonit.add(kys1);
         buttonit.add(kys2);
@@ -188,7 +171,6 @@ public class FXMLDocumentController implements Initializable {
         buttonit.add(kys21);
         buttonit.add(kys22);
         kysOnAction();
-        //valmisOnAction();
         updateGUI();
     }
 
@@ -272,6 +254,7 @@ public class FXMLDocumentController implements Initializable {
      * Sulkee ohjelman
      */
     @FXML
+    @Override
     public void closeButtonAction() {
         kone.resetPisteet();
         kone.sulje();
@@ -302,41 +285,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Vaihtaa kielen viroksi
-     */
-    @FXML
-    public void eeLan() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        languageSelection.langEE();
-        messages = languageSelection.resourceBundle();
-        updateGUI();
-    }
-
-    /**
-     * Vaihtaa kielen suomeksi
-     */
-    @FXML
-    public void fiLan() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        languageSelection.langFI();
-        messages = languageSelection.resourceBundle();
-        updateGUI();
-    }
-
-    /**
-     * Vaihtaa kielen englantiin
-     */
-    @FXML
-    public void gbLan() {
-        System.out.println("<<<<<<<<<<Kieli vaihdettu>>>>>>>>>>");
-        languageSelection.langGB();
-        messages = languageSelection.resourceBundle();
-        updateGUI();
-    }
-
-    /**
      * Päivittää käyttöliittymän
      */
+    @Override
     public void updateGUI() {
         closeButton.setText(messages.getString("shutdown"));
         kyselyBtn.setText(messages.getString("questions"));
