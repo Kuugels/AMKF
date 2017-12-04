@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="745.0" styleClass="AnchorPane" stylesheets="@kysely.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="amkf.FXMLDocumentController">
+   <children>
+      <Text layoutX="121.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="otsikko" text="Yhteystiedot" AnchorPane.topAnchor="0.029998779296875">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="2.0" layoutY="80.0" prefHeight="94.0" prefWidth="745.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="138.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="288.0" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sähköposti:" textAlignment="RIGHT" wrappingWidth="352.32000160217285" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="asiakaspalvelu@amkf.fi" wrappingWidth="337.32000160217285" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Facebook:" textAlignment="RIGHT" wrappingWidth="352.32000160217285" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="https://www.facebook.com/AMKfishcom" wrappingWidth="337.32000160217285" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Käyntiosoite:" textAlignment="RIGHT" wrappingWidth="352.32000160217285" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puuhkatie 19 00558 Helsinki" wrappingWidth="337.32000160217285" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
