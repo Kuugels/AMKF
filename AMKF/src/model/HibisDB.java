@@ -68,13 +68,30 @@ public class HibisDB implements HibisDB_IF {
      * @return palauttaa Koulu-olion.
      */
     @Override
-    public Koulu readKoulu(int id){
-        return null;
+    public Koulu[] readKoulut(){
+        Koulu[] kouluLista = null;
+        try {
+            istunto = istuntotehdas.openSession();
+            istunto.beginTransaction();
+            @SuppressWarnings("unchecked")
+            List<Koulutus> result = istunto.createQuery("from Koulu").getResultList();
+            istunto.getTransaction().commit();
+            kouluLista = result.toArray(new Koulu[result.size()]);
+
+        } catch (Exception e) {
+            if (transaktio != null) {
+                transaktio.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+        }
+        return kouluLista;
     }
     
     /**
      * haetaan tietokannasta kaikki koulutuskset.
-     * @return palautetaan ne Koulutus-olion taulukkona
+     * @return palautetaan ne Koulutus-olion taulukkona (ilman nimiduplikaatteja)
      */
     @Override
     public Koulutus[] readKoulutukset() {
@@ -98,6 +115,34 @@ public class HibisDB implements HibisDB_IF {
             istunto.close();
         }
         return uusiKoulutusLista;
+    }
+    
+    /**
+     * 
+     * @return palauttaa koulutus-oliotaulukon KAIKISTA koulutuksista.
+     * (myös samannimisistä koulutuksista, joita käydään monissa eri kouluissa)
+     */
+    
+    @Override
+    public Koulutus[] readAllKoulutukset() {
+        Koulutus[] koulutusLista = null;
+        try {
+            istunto = istuntotehdas.openSession();
+            istunto.beginTransaction();
+            @SuppressWarnings("unchecked")
+            List<Koulutus> result = istunto.createQuery("from Koulutus").getResultList();
+            istunto.getTransaction().commit();
+            koulutusLista = result.toArray(new Koulutus[result.size()]);
+
+        } catch (Exception e) {
+            if (transaktio != null) {
+                transaktio.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            istunto.close();
+        }
+        return koulutusLista;
     }
     
     /**
