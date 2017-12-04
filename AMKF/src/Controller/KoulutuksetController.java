@@ -64,8 +64,8 @@ public class KoulutuksetController implements Initializable {
     private LanguageSelection languageSelection;
     private ResourceBundle messages;
 
-    String[] topKoulutukset;
-    String[] kuvaukset;
+    private String[] topKoulutukset;
+    private String[] kuvaukset;
 
     
     /**
@@ -90,14 +90,12 @@ public class KoulutuksetController implements Initializable {
         }
 
         for (int i = 0; i < kuvaukset.length; i++) {
-            System.out.println("------------------Koulutus" + (i + 1) + "  ------------------");
+            System.out.println("------------------Koulutus" + (i + 1) + "  -------------------");
             System.out.println("Koulutus: " + topKoulutukset[i]);
             System.out.println("Kuvaus: " + kuvaukset[i]);
             System.out.println("------------------------------------------------");
         }
-
         createListOfEducations();
-
     }
 
     /**
@@ -108,7 +106,6 @@ public class KoulutuksetController implements Initializable {
         Button btn = new Button(messages.getString("questions"));
         Text ed;
         
-
         for (int i = 0; i < topKoulutukset.length; i++) {
             ed = new Text(topKoulutukset[i] + "\n" + messages.getString("description") + ": " + kuvaukset[i]);
             list.getItems().addAll(ed);
@@ -126,24 +123,17 @@ public class KoulutuksetController implements Initializable {
     }
 
     private void listItemHandler(ListView list) {
-        
-        Boolean alreadyListed = false;
-        
         Text txt = (Text) list.getSelectionModel().getSelectedItem();
         String origTxt = topKoulutukset[list.getSelectionModel().getSelectedIndex()] + "\n" + messages.getString("description") + ": " + kuvaukset[list.getSelectionModel().getSelectedIndex()];
-        if (alreadyListed) {
-            txt.setText(origTxt);
-            alreadyListed = false;
-        }else {
+        if (!txt.getText().contains("Koulut:")) {
             String schools = "\nKoulut:";
             for (String school : kone.getKoulutForKoulutus(topKoulutukset[list.getSelectionModel().getSelectedIndex()])) {
                 schools += "\n>" + school;
             }
             txt.setText(txt.getText() + schools);
-            alreadyListed = true;
+        }else {
+            txt.setText(origTxt);
         }
-        
-
     }
 
     /**
