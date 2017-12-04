@@ -91,6 +91,26 @@ public class AMKFKone implements AMKFKone_IF {
         return alueStrTaul;
     }
     
+    public String[] getKoulutForKoulutus(String koulutusNimi){
+        Koulu[] koulut = dao.readKoulut();
+        Koulutus[] koulutukset = dao.readAllKoulutukset();
+        ArrayList<String> matchingKoulut = new ArrayList();
+        for(int i = 0; i < koulutukset.length; i++){
+            if(koulutukset[i].getNimi().equals(koulutusNimi)){
+                for(int j = 0; j < koulut.length; j++){
+                    if(koulutukset[i].getKouluID() == koulut[j].getId()){
+                        matchingKoulut.add(koulut[j].getNimi());
+                    }
+                }
+            }
+        }
+        String[] matchingKoulutArr = matchingKoulut.toArray(new String[matchingKoulut.size()]);
+        if(matchingKoulut.isEmpty()){
+            System.out.println("Ei löytynyt sopivia kouluja koulutukselle!");
+        }
+        return matchingKoulutArr;
+    }
+    
     /**
      * Suljetaan tietokantayhteys
      */
