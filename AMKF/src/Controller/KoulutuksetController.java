@@ -67,7 +67,6 @@ public class KoulutuksetController implements Initializable {
     String[] topKoulutukset;
     String[] kuvaukset;
 
-    Boolean alreadyListed = false;
     
     /**
      * Initializes the controller class.
@@ -108,6 +107,7 @@ public class KoulutuksetController implements Initializable {
         ListView list = new ListView();
         Button btn = new Button(messages.getString("questions"));
         Text ed;
+        
 
         for (int i = 0; i < topKoulutukset.length; i++) {
             ed = new Text(topKoulutukset[i] + "\n" + messages.getString("description") + ": " + kuvaukset[i]);
@@ -126,14 +126,20 @@ public class KoulutuksetController implements Initializable {
     }
 
     private void listItemHandler(ListView list) {
+        
         Boolean alreadyListed = false;
+        
         Text txt = (Text) list.getSelectionModel().getSelectedItem();
-        final String originalTxt = txt.getText();
+        String origTxt = topKoulutukset[list.getSelectionModel().getSelectedIndex()] + "\n" + messages.getString("description") + ": " + kuvaukset[list.getSelectionModel().getSelectedIndex()];
         if (alreadyListed) {
-            txt.setText(originalTxt);
+            txt.setText(origTxt);
             alreadyListed = false;
         }else {
-            txt.setText(txt.getText() + "\nTÄSSÄ PITÄIS OLLA KOULUT LISTATTUNA");
+            String schools = "\nKoulut:";
+            for (String school : kone.getKoulutForKoulutus(topKoulutukset[list.getSelectionModel().getSelectedIndex()])) {
+                schools += "\n>" + school;
+            }
+            txt.setText(txt.getText() + schools);
             alreadyListed = true;
         }
         
