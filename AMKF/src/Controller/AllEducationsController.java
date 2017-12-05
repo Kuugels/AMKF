@@ -27,36 +27,24 @@ import model.LanguageSelection;
  */
 public class AllEducationsController extends Template implements Initializable {
 
-    AMKFKone kone;
-    
-    @FXML
-    Button closeButton;
-    @FXML
-    Button kyselyBtn;
-    @FXML
-    Button yhteystiedotBtn;
-    @FXML
-    Button koulutuksetBtn;
-
     @FXML
     private BorderPane borderPane;
     @FXML
     private ScrollPane scrollPane;
-
-    private LanguageSelection languageSelection;
-    private ResourceBundle messages;
     
     String[] educations;
 
     /**
      * Initializes the controller class.
+     * @param url urlipurli
+     * @param rb re soossi buntle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        kone = new AMKFKone();
-
         listAllEducations();
+        initLsMe();//Lataa käytetyn kielen
+        createHandlers();//Luo handlerit sivupalkin nappuloille
+        updateGUI();
     }
 
     /**
@@ -78,7 +66,6 @@ public class AllEducationsController extends Template implements Initializable {
             }
         });
 
-        //list.getItems().add(educations);
         borderPane.setCenter(list);
         scrollPane.setContent(borderPane);
         
@@ -86,13 +73,13 @@ public class AllEducationsController extends Template implements Initializable {
     
     /**
      * Runs when ListView Object is clicked
-     * @param list ListViewl
+     * @param list ListView
      * @param educations String array of educations in database
      */
     private void listItemHandler(ListView list,String[] educations) {
         Text txt = (Text) list.getSelectionModel().getSelectedItem();
-        txt.setWrappingWidth(700);
-        String origTxt = educations[list.getSelectionModel().getSelectedIndex()];
+        txt.setWrappingWidth(700); //Asettaa tekstin max pituudeksi 700px
+        String origTxt = educations[list.getSelectionModel().getSelectedIndex()];//Alkuperäinen teksti 
         if (!txt.getText().contains("Koulut:")) {
             String schools = "\nKuvaus: " + kone.getKuvaus(educations[list.getSelectionModel().getSelectedIndex()]) +  "\nKoulut:";
             for (String school : kone.getKoulutForKoulutus(origTxt)) {
@@ -106,7 +93,6 @@ public class AllEducationsController extends Template implements Initializable {
 
     @Override
     public void updateGUI() {
-        //System.out.println(messages.getString("shutdown"));
         closeButton.setText(messages.getString("shutdown"));
         kyselyBtn.setText(messages.getString("questions"));
         koulutuksetBtn.setText(messages.getString("educations"));

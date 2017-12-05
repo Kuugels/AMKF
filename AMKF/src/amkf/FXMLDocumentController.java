@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Käyttäjä;
@@ -144,8 +145,8 @@ public class FXMLDocumentController extends Template implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Kielipaketin alustus
-        initLsMe();
+        initLsMe();//Lataa käytetyn kielen
+        createHandlers();//Luo handlerit sivupalkin nappuloille
 
         buttonit = new ArrayList<MenuButton>();
         buttonit.add(kys1);
@@ -726,5 +727,6 @@ public class FXMLDocumentController extends Template implements Initializable {
         }
 
     }
+
 
 }

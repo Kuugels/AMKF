@@ -26,17 +26,6 @@ import model.LanguageSelection;
  * @author Samuli Käkönen
  */
 public class KoulutuksetController extends Template implements Initializable {
-    
-    private AMKFKone kone;
-    /*
-    @FXML
-    Button closeButton;
-    @FXML
-    Button kyselyBtn;
-    @FXML
-    Button yhteystiedotBtn;
-    @FXML
-    Button koulutuksetBtn;*/
 
     @FXML
     BorderPane borderPane;
@@ -46,31 +35,27 @@ public class KoulutuksetController extends Template implements Initializable {
 
     String lang;
 
-    /*private LanguageSelection languageSelection;
-    private ResourceBundle messages;*/
-
     private String[] topKoulutukset;
     private String[] kuvaukset;
 
     
     /**
      * Initializes the controller class.
+     * @param url urlipurli
+     * @param rb soossi buntle mallia resource
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Kielipaketin lataus
-        /*languageSelection = new LanguageSelection();
-        messages = languageSelection.resourceBundle();*/
-
-        initLsMe();
+        initLsMe();//Lataa käytetyn kielen
+        createHandlers();//Luo handlerit sivupalkin nappuloille
         
         int koulutusmäärä = 5;
-        kone = new AMKFKone();
+
         topKoulutukset = kone.getTopKoulutukset(koulutusmäärä);
         kuvaukset = new String[topKoulutukset.length];
 
-        //updateGUI();
+        updateGUI();
 
         for (int i = 0; i < topKoulutukset.length; i++) {
             kuvaukset[i] = kone.getKuvaus(topKoulutukset[i]);
