@@ -21,7 +21,7 @@ import model.AMKFKone;
 import model.LanguageSelection;
 
 /**
- * Pohja kaikile muille kontrollereille paitsi loginControllerille
+ * Pohja kaikile muille kontrollereille
  *
  * @author Samuli Käkönen
  */
@@ -43,12 +43,19 @@ public abstract class Template {
 
     public abstract void updateGUI();
 
+    /**
+     * Lataa kielipaketin
+     */
     public void initLsMe() {
         languageSelection = new LanguageSelection();
         messages = languageSelection.resourceBundle();
 
     }
 
+    
+    /**
+     * Luo handlerit sivupalkin nappuloille
+     */
     public void createHandlers() {
         koulutuksetBtn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

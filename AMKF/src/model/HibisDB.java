@@ -64,7 +64,6 @@ public class HibisDB implements HibisDB_IF {
     
     /**
      *  
-     * @param id Annetaan parametrina halutun koulun id
      * @return palauttaa Koulu-olion.
      */
     @Override
