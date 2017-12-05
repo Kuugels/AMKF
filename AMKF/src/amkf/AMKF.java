@@ -20,9 +20,12 @@ public class AMKF extends Application {
 
     Parent root;
 
-    /**Käynnistää käyttöliittymän
+    /**
+     * Käynnistää käyttöliittymän
+     *
      * @param stage jepulis
-     * @throws java.lang.Exception kepulis*/
+     * @throws java.lang.Exception kepulis
+     */
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -40,8 +43,8 @@ public class AMKF extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("java version: "+System.getProperty("java.version"));
-System.out.println("javafx.version: " + System.getProperty("javafx.version"));
+        System.out.println("java version: " + System.getProperty("java.version"));
+        System.out.println("javafx.version: " + System.getProperty("javafx.version"));
         launch(args);
     }
 
