@@ -42,16 +42,16 @@ public abstract class Template {
     public ResourceBundle messages;
 
     public abstract void updateGUI();
+    public abstract void closeButtonAction();
 
     /**
      * Lataa kielipaketin
      */
     public void initLsMe() {
-        languageSelection = new LanguageSelection();
+        languageSelection = LanguageSelection.getInstance();
         messages = languageSelection.resourceBundle();
 
     }
-
     
     /**
      * Luo handlerit sivupalkin nappuloille
@@ -141,7 +141,5 @@ public abstract class Template {
         messages = languageSelection.resourceBundle();
         updateGUI();
     }
-
-    public abstract void closeButtonAction();
 
 }

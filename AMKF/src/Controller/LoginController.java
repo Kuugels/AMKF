@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +21,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.AMKFKone;
 import model.Käyttäjä;
 import model.LanguageSelection;
 
@@ -54,18 +52,10 @@ public class LoginController extends Template implements Initializable {
     @FXML
     private Button haeButton;
 
-    //@FXML
-    //public javafx.scene.control.Button closeButton;
-
-    //private LanguageSelection languageSelection;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //Kielipaketin lataus
-        languageSelection = new LanguageSelection();
-        languageSelection.langFI();
-        messages = languageSelection.resourceBundle();
+        initLsMe();
 
         //Hakee maakunnat tietokannasta
         maakunnat = kone.getAsuinalueet();
@@ -74,6 +64,8 @@ public class LoginController extends Template implements Initializable {
 
         //GUI päivitys
         updateGUI();
+        
+        kone.sulje();
     }
 
     /**
@@ -95,7 +87,7 @@ public class LoginController extends Template implements Initializable {
         stage.setScene(scene);
         System.out.println("Scene vaihdettu");
 
-        kone.sulje();
+        //kone.sulje();
         System.out.println("Tietokantayhteys suljettu");
     }
 

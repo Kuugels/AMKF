@@ -9,14 +9,24 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * Sisältää tiedon käytössä olevasta tiedosta
- *
+ * Hoitaa kielen vaihdon
  * @author Samuli Käkönen
  */
 public class LanguageSelection {
 
     private static ResourceBundle messages;
-
+    private static LanguageSelection INSTANCE = null;
+    
+    private LanguageSelection() {
+        langFI();
+    }
+    
+    public static LanguageSelection getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new LanguageSelection();
+        }
+        return INSTANCE;
+    }
     /**
      * Vaihtaa kielen viroksi
      */
