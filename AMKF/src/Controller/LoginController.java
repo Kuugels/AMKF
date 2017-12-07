@@ -33,9 +33,6 @@ public class LoginController extends Template implements Initializable {
 
     private String[] maakunnat;
 
-    //private ResourceBundle messages;
-
-    //private AMKFKone kone = new AMKFKone();
     private Käyttäjä kauttaja = new Käyttäjä();
 
     @FXML

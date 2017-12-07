@@ -130,6 +130,43 @@ public class FXMLDocumentController extends Template implements Initializable {
     MenuButton kys21;
     @FXML
     MenuButton kys22;
+    
+    
+    int matemaattinen = 0;
+        int bisnes = 0;
+        int tekninen = 0;
+        int arkkitehti = 0;
+        int kielet = 0;
+        int johtaja = 0;
+        int kauneus = 0;
+        int urheilullinen = 0;
+        int taiteellinen = 0;
+        int musiikki = 0;
+        int ihmislaheinen = 0;
+        int kaytannollinen = 0;
+        int sankari = 0;
+        int empaattinen = 0;
+        int ideoija = 0;
+        int autot = 0;
+        int huonekalut = 0;
+        int kokki = 0;
+        int ymparisto = 0;
+        int elaimet = 0;
+        int ruokavalio = 0;
+        int esiintyja = 0;
+        int pelastaja = 0;
+        int lapsirakas = 0;
+        int tietokoneet = 0;
+        int luonnontieteet = 0;
+        int fysioterapia = 0;
+        int terveys = 0;
+        int hyvinvointi = 0;
+        int matkustelu = 0;
+        int vaatteet = 0;
+        int tekniikka = 0;
+        int assistentti = 0;
+        int tehy = 0;
+    
 
     ArrayList<MenuButton> buttonit;
 
@@ -269,9 +306,12 @@ public class FXMLDocumentController extends Template implements Initializable {
      */
     @FXML
     public void readyOnAction(ActionEvent e) throws IOException {
+        //lisääPisteitä();
         for (int i = 0; i < buttonit.size(); i++) {
             lisääPisteitä(i);
+            System.out.println("---------------------ROUND " + i + " ---------------------------");
         }
+        addPoints();
         Node node = (Node) e.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         Parent root;
@@ -358,37 +398,51 @@ public class FXMLDocumentController extends Template implements Initializable {
 
     }
 
-    public void lisääPisteitä(int kysymysNumero) {
+    public void lisääPisteitä(int kysymysNumero) {//int kysymysNumero
         System.out.println("Lisätään pisteitä");
         String vastaus = "";
         vastaus = buttonit.get(kysymysNumero).getText();
+
         switch (kysymysNumero) {
             //Oletko matemaattisesti lahjakas?
             case 0:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Matemaattinen");
-                    kone.lisääPisteitä(5, "Bisnes");
-                    kone.lisääPisteitä(4, "Tekninen");
-                    kone.lisääPisteitä(2, "Arkkitehti");
+                    //kone.lisääPisteitä(8, "Matemaattinen");
+                    matemaattinen += 8;
+                    //kone.lisääPisteitä(5, "Bisnes");
+                    bisnes += 5;
+                    //kone.lisääPisteitä(4, "Tekninen");
+                    tekninen += 4;
+                    //kone.lisääPisteitä(2, "Arkkitehti");
+                    arkkitehti += 2;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(-6, "Matemaattinen");
-                    kone.lisääPisteitä(-3, "Bisnes");
-                    kone.lisääPisteitä(-2, "Tekninen");
+                    //kone.lisääPisteitä(-6, "Matemaattinen");
+                    matemaattinen -= 6;
+                    //kone.lisääPisteitä(-3, "Bisnes");
+                    bisnes -= 3;
+                    //kone.lisääPisteitä(-2, "Tekninen");
+                    tekninen -= 2;
                 }
                 break;
             //Oletko kielellisesti lahjakas?
             case 1:
 
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Kielet");
-                    kone.lisääPisteitä(5, "Bisnes");
-                    kone.lisääPisteitä(3, "Johtaja");
+                    //kone.lisääPisteitä(8, "Kielet");
+                    kielet += 8;
+                    //kone.lisääPisteitä(5, "Bisnes");
+                    bisnes += 5;
+                    //kone.lisääPisteitä(3, "Johtaja");
+                    johtaja += 3;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(-6, "Kielet");
-                    kone.lisääPisteitä(2, "Kauneus");
-                    kone.lisääPisteitä(2, "Urheilullinen");
+                    //kone.lisääPisteitä(-6, "Kielet");
+                    kielet -= 6;
+                    //kone.lisääPisteitä(2, "Kauneus");
+                    kauneus += 2;
+                    //kone.lisääPisteitä(2, "Urheilullinen");
+                    urheilullinen += 2;
 
                 }
                 break;
@@ -396,323 +450,501 @@ public class FXMLDocumentController extends Template implements Initializable {
             case 2:
 
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Taiteellinen");
-                    kone.lisääPisteitä(3, "Arkkitehti");
-                    kone.lisääPisteitä(3, "Musiikki");
+                    //kone.lisääPisteitä(5, "Taiteellinen");
+                    taiteellinen += 5;
+                    //kone.lisääPisteitä(3, "Arkkitehti");
+                    arkkitehti += 3;
+                    //kone.lisääPisteitä(3, "Musiikki");
+                    musiikki += 3;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(4, "Kaytannollinen");
-                    kone.lisääPisteitä(2, "Urheilullinen");
+                    //kone.lisääPisteitä(4, "Kaytannollinen");
+                    kaytannollinen += 4;
+                    //kone.lisääPisteitä(2, "Urheilullinen");
+                    urheilullinen += 2;
                 }
                 break;
             //Oletko mielelläsi ihmisten kanssa tekemisissä?
             case 3:
 
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Ihmislaheinen");
+                    //kone.lisääPisteitä(8, "Ihmislaheinen");
+                    ihmislaheinen += 8;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(-8, "Ihmislaheinen");
+                    //kone.lisääPisteitä(-8, "Ihmislaheinen");
+                    ihmislaheinen -= 8;
                 }
                 break;
             //Haaveiletko työstä markkinoinnin tai mainostamisen parissa?
             case 4:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Bisnes");
-                    kone.lisääPisteitä(5, "Ideoija");
-                    kone.lisääPisteitä(5, "Taiteellinen");
-                    kone.lisääPisteitä(5, "Tekninen");
+                    //kone.lisääPisteitä(5, "Bisnes");
+                    bisnes += 5;
+                    //kone.lisääPisteitä(5, "Ideoija");
+                    ideoija += 5;
+                    //kone.lisääPisteitä(5, "Taiteellinen");
+                    taiteellinen += 5;
+                    //kone.lisääPisteitä(5, "Tekninen");
+                    tekninen += 5;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(-3, "Bisnes");
-                    kone.lisääPisteitä(3, "Autot");
-                    kone.lisääPisteitä(3, "Urheilullinen");
+                    //kone.lisääPisteitä(-3, "Bisnes");
+                    bisnes -= 3;
+                    //kone.lisääPisteitä(3, "Autot");
+                    autot += 3;
+                    //kone.lisääPisteitä(3, "Urheilullinen");
+                    urheilullinen += 3;
                 }
                 break;
             //Pidätkö muiden ihmisten auttamisesta?
             case 5:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Ihmislaheinen");
-                    kone.lisääPisteitä(5, "Empaattinen");
-                    kone.lisääPisteitä(5, "Sankari");
-                    kone.lisääPisteitä(5, "Pelastaja");
+                    //kone.lisääPisteitä(5, "Ihmislaheinen");
+                    ihmislaheinen += 5;
+                    //kone.lisääPisteitä(5, "Empaattinen");
+                    empaattinen += 5;
+                    //kone.lisääPisteitä(5, "Sankari");
+                    sankari += 5;
+                    //kone.lisääPisteitä(5, "Pelastaja");
+                    pelastaja += 5;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(3, "Huonekalut");
-                    kone.lisääPisteitä(3, "Bisnes");
-                    kone.lisääPisteitä(3, "Kielet");
+                    //kone.lisääPisteitä(3, "Huonekalut");
+                    huonekalut += 3;
+                    //kone.lisääPisteitä(3, "Bisnes");
+                    bisnes += 3;
+                    //kone.lisääPisteitä(3, "Kielet");
+                    kielet += 3;
                 }
                 break;
             //Haluatko tehdä töitä lasten ja nuorten parissa?
             case 6:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(7, "Ihmislaheinen");
-                    kone.lisääPisteitä(9, "Empaattinen");
-                    kone.lisääPisteitä(10, "Lapsirakas");
+                    //kone.lisääPisteitä(7, "Ihmislaheinen");
+                    ihmislaheinen += 7;
+                    //kone.lisääPisteitä(9, "Empaattinen");
+                    empaattinen += 9;
+                    //kone.lisääPisteitä(10, "Lapsirakas");
+                    lapsirakas += 10;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(3, "Huonekalut");
-                    kone.lisääPisteitä(3, "Bisnes");
-                    kone.lisääPisteitä(4, "Kielet");
-                    kone.lisääPisteitä(4, "Tekninen");
-                    kone.lisääPisteitä(6, "Autot");
-                    kone.lisääPisteitä(3, "Tietokoneet");
-                    kone.lisääPisteitä(5, "Luonnontieteet");
-                    kone.lisääPisteitä(3, "Arkkitehti");
-                    kone.lisääPisteitä(3, "Kokki");
+                    //kone.lisääPisteitä(3, "Huonekalut");
+                    huonekalut += 3;
+                    //kone.lisääPisteitä(3, "Bisnes");
+                    bisnes += 3;
+                    //kone.lisääPisteitä(4, "Kielet");
+                    kielet += 4;
+                    //kone.lisääPisteitä(4, "Tekninen");
+                    tekninen += 4;
+                    //kone.lisääPisteitä(6, "Autot");
+                    autot += 6;
+                    //kone.lisääPisteitä(3, "Tietokoneet");
+                    tietokoneet += 3;
+                    //kone.lisääPisteitä(5, "Luonnontieteet");
+                    luonnontieteet += 5;
+                    //kone.lisääPisteitä(3, "Arkkitehti");
+                    arkkitehti += 3;
+                    //kone.lisääPisteitä(3, "Kokki");
+                    kokki += 3;
                 }
                 break;
             //Ovatko urheilu ja liikunta sinulle tärkeää?
             case 7:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(9, "Urheilullinen");
-                    kone.lisääPisteitä(4, "Kaytannollinen");
-                    kone.lisääPisteitä(9, "Fysioterapia");
-                    kone.lisääPisteitä(7, "Terveys");
-                    kone.lisääPisteitä(7, "Hyvinvointi");
-                    kone.lisääPisteitä(6, "Ruokavalio");
+                    //kone.lisääPisteitä(9, "Urheilullinen");
+                    urheilullinen += 9;
+                    //kone.lisääPisteitä(4, "Kaytannollinen");
+                    kaytannollinen += 4;
+                    //kone.lisääPisteitä(9, "Fysioterapia");
+                    fysioterapia += 9;
+                    //kone.lisääPisteitä(7, "Terveys");
+                    terveys += 7;
+                    //kone.lisääPisteitä(7, "Hyvinvointi");
+                    hyvinvointi += 7;
+                    //kone.lisääPisteitä(6, "Ruokavalio");
+                    ruokavalio += 6;
 
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(3, "Matemaattinen");
-                    kone.lisääPisteitä(3, "Kielet");
-                    kone.lisääPisteitä(3, "Taiteellinen");
+                    //kone.lisääPisteitä(3, "Matemaattinen");
+                    matemaattinen += 3;
+                    //kone.lisääPisteitä(3, "Kielet");
+                    kielet += 3;
+                    //kone.lisääPisteitä(3, "Taiteellinen");
+                    taiteellinen += 3;
                 }
 
                 break;
             //Oletko käytännöllinen ja kätevä käsistäsi?
             case 8:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Taiteellinen");
-                    kone.lisääPisteitä(5, "Kaytannollinen");
-                    kone.lisääPisteitä(5, "Kokki");
-                    kone.lisääPisteitä(5, "Tekninen");
-                    kone.lisääPisteitä(5, "Autot");
-                    kone.lisääPisteitä(5, "Huonekalut");
+                    //kone.lisääPisteitä(5, "Taiteellinen");
+                    taiteellinen += 5;
+                    //kone.lisääPisteitä(5, "Kaytannollinen");
+                    kaytannollinen += 5;
+                    //kone.lisääPisteitä(5, "Kokki");
+                    kokki += 5;
+                    //kone.lisääPisteitä(5, "Tekninen");
+                    tekninen += 5;
+                    //kone.lisääPisteitä(5, "Autot");
+                    autot += 5;
+                    //kone.lisääPisteitä(5, "Huonekalut");
+                    huonekalut += 5;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(3, "Terveys");
-                    kone.lisääPisteitä(3, "Kauneus");
-                    kone.lisääPisteitä(3, "Esiintyjä");
+                    //kone.lisääPisteitä(3, "Terveys");
+                    terveys += 3;
+                    //kone.lisääPisteitä(3, "Kauneus");
+                    kauneus += 3;
+                    //kone.lisääPisteitä(3, "Esiintyjä");
+                    esiintyja += 3;
                 }
                 break;
             //Tulevatko ystäväsi usein pyytämään sinulta apua ja neuvoa?
             case 9:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Ihmislaheinen");
-                    kone.lisääPisteitä(5, "Empaattinen");
-                    kone.lisääPisteitä(7, "Johtaja");
-                    kone.lisääPisteitä(2, "Esiintyjä");
+                    //kone.lisääPisteitä(5, "Ihmislaheinen");
+                    ihmislaheinen += 5;
+                    //kone.lisääPisteitä(5, "Empaattinen");
+                    empaattinen += 5;
+                    //kone.lisääPisteitä(7, "Johtaja");
+                    johtaja += 7;
+                    //kone.lisääPisteitä(2, "Esiintyjä");
+                    esiintyja += 2;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(3, "Huonekalut");
-                    kone.lisääPisteitä(4, "Ymparisto");
-                    kone.lisääPisteitä(3, "Huonekalut");
+                    //kone.lisääPisteitä(3, "Huonekalut");
+                    huonekalut += 3;
+                    //kone.lisääPisteitä(4, "Ymparisto");
+                    ymparisto += 4;
+                    //kone.lisääPisteitä(3, "Huonekalut");
+                    huonekalut += 3;
                 }
                 break;
             //Pidätkö esiintymisestä?
             case 10:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Ihmislaheinen");
-                    kone.lisääPisteitä(5, "Kielet");
-                    kone.lisääPisteitä(7, "Johtaja");
-                    kone.lisääPisteitä(8, "Esiintyjä");
+                    //kone.lisääPisteitä(5, "Ihmislaheinen");
+                    ihmislaheinen += 5;
+                    //kone.lisääPisteitä(5, "Kielet");
+                    kielet += 5;
+                    //kone.lisääPisteitä(7, "Johtaja");
+                    johtaja += 7;
+                    //kone.lisääPisteitä(8, "Esiintyjä");
+                    esiintyja += 8;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Autot");
-                    kone.lisääPisteitä(5, "Tekninen");
-                    kone.lisääPisteitä(6, "Tietokoneet");
-                    kone.lisääPisteitä(6, "Matemaattinen");
-                    kone.lisääPisteitä(6, "Tietokoneet");
+                    //kone.lisääPisteitä(7, "Autot");
+                    autot += 7;
+                    //kone.lisääPisteitä(5, "Tekninen");
+                    tekninen += 5;
+                    //kone.lisääPisteitä(6, "Tietokoneet");
+                    tietokoneet += 6;
+                    //kone.lisääPisteitä(6, "Matemaattinen");
+                    matemaattinen += 6;
+                    //kone.lisääPisteitä(6, "Tietokoneet");
+                    tietokoneet += 6;
                 }
                 break;
             //Oletko valmis matkustelemaan työsi puolesta?
             case 11:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Kielet");
-                    kone.lisääPisteitä(5, "Bisnes");
-                    kone.lisääPisteitä(7, "Matkustelu");
-                    kone.lisääPisteitä(8, "Musiikki");
-                    kone.lisääPisteitä(8, "Johtaja");
+                    //kone.lisääPisteitä(5, "Kielet");
+                    kielet += 5;
+                    //kone.lisääPisteitä(5, "Bisnes");
+                    bisnes += 5;
+                    //kone.lisääPisteitä(7, "Matkustelu");
+                    matkustelu += 7;
+                    //kone.lisääPisteitä(8, "Musiikki");
+                    musiikki += 8;
+                    //kone.lisääPisteitä(8, "Johtaja");
+                    johtaja += 8;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Ymparisto");
-                    kone.lisääPisteitä(5, "Kaytannollinen");
-                    kone.lisääPisteitä(6, "Kokki");
-                    kone.lisääPisteitä(6, "Hyvinvointi");
-                    kone.lisääPisteitä(6, "Tekninen");
+                    //kone.lisääPisteitä(7, "Ymparisto");
+                    ymparisto += 7;
+                    //kone.lisääPisteitä(5, "Kaytannollinen");
+                    kaytannollinen += 5;
+                    //kone.lisääPisteitä(6, "Kokki");
+                    kokki += 6;
+                    //kone.lisääPisteitä(6, "Hyvinvointi");
+                    hyvinvointi += 6;
+                    //kone.lisääPisteitä(6, "Tekninen");
+                    tekninen += 6;
                 }
                 break;
             //Pidätkö ruoanlaitosta?
             case 12:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Kaytannollinen");
-                    kone.lisääPisteitä(10, "Kokki");
-                    kone.lisääPisteitä(7, "Terveys");
-                    kone.lisääPisteitä(8, "Ruokavalio");
+                    //kone.lisääPisteitä(5, "Kaytannollinen");
+                    kaytannollinen += 5;
+                    //kone.lisääPisteitä(10, "Kokki");
+                    kokki += 10;
+                    //kone.lisääPisteitä(7, "Terveys");
+                    terveys += 7;
+                    //kone.lisääPisteitä(8, "Ruokavalio");
+                    ruokavalio += 8;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Matemaattinen");
-                    kone.lisääPisteitä(5, "Kielet");
-                    kone.lisääPisteitä(6, "Bisnes");
-                    kone.lisääPisteitä(6, "Esiintyja");
-                    kone.lisääPisteitä(6, "Arkkitehti");
+                    //kone.lisääPisteitä(7, "Matemaattinen");
+                    matemaattinen += 7;
+                    //kone.lisääPisteitä(5, "Kielet");
+                    kielet += 5;
+                    //kone.lisääPisteitä(6, "Bisnes");
+                    bisnes += 6;
+                    //kone.lisääPisteitä(6, "Esiintyja");
+                    esiintyja += 6;
+                    //kone.lisääPisteitä(6, "Arkkitehti");
+                    arkkitehti += 6;
                 }
                 break;
             //Pidätkö teknisten asioiden parissa puuhailusta ja uusien laitteiden keksimisestä?
             case 13:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(5, "Matemaattinen");
-                    kone.lisääPisteitä(9, "Tekninen");
-                    kone.lisääPisteitä(7, "Ideoija");
-                    kone.lisääPisteitä(8, "Autot");
-                    kone.lisääPisteitä(8, "Tietokoneet");
+                    //kone.lisääPisteitä(5, "Matemaattinen");
+                    matemaattinen += 5;
+                    //kone.lisääPisteitä(9, "Tekninen");
+                    tekninen += 9;
+                    //kone.lisääPisteitä(7, "Ideoija");
+                    ideoija += 7;
+                    //kone.lisääPisteitä(8, "Autot");
+                    autot += 8;
+                    //kone.lisääPisteitä(8, "Tietokoneet");
+                    tietokoneet += 8;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Sankari");
-                    kone.lisääPisteitä(5, "Terveys");
-                    kone.lisääPisteitä(6, "Ruokavalio");
-                    kone.lisääPisteitä(6, "Esiintyjä");
-                    kone.lisääPisteitä(2, "Lapsirakas");
+                    //kone.lisääPisteitä(7, "Sankari");
+                    sankari += 7;
+                    //kone.lisääPisteitä(5, "Terveys");
+                    terveys += 5;
+                    //kone.lisääPisteitä(6, "Ruokavalio");
+                    ruokavalio += 6;
+                    //kone.lisääPisteitä(6, "Esiintyjä");
+                    esiintyja += 6;
+                    //kone.lisääPisteitä(2, "Lapsirakas");
+                    lapsirakas += 2;
                 }
                 break;
             //Ovatko luonnontieteet lähellä sydäntäsi?
             case 14:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(9, "Matemaattinen");
-                    kone.lisääPisteitä(8, "Tekninen");
-                    kone.lisääPisteitä(10, "Luonnontieteet");
-                    kone.lisääPisteitä(4, "Ymparisto");
+                    //kone.lisääPisteitä(9, "Matemaattinen");
+                    matemaattinen += 9;
+                    //kone.lisääPisteitä(8, "Tekninen");
+                    tekninen += 8;
+                    //kone.lisääPisteitä(10, "Luonnontieteet");
+                    luonnontieteet += 10;
+                    //kone.lisääPisteitä(4, "Ymparisto");
+                    ymparisto += 4;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(4, "Matkustelu");
-                    kone.lisääPisteitä(5, "Terveys");
-                    kone.lisääPisteitä(6, "Kokki");
-                    kone.lisääPisteitä(6, "Huonekalut");
-                    kone.lisääPisteitä(6, "Vaatteet");
+                    //kone.lisääPisteitä(4, "Matkustelu");
+                    matkustelu += 4;
+                    //kone.lisääPisteitä(5, "Terveys");
+                    terveys += 5;
+                    //kone.lisääPisteitä(6, "Kokki");
+                    kokki += 6;
+                    //kone.lisääPisteitä(6, "Huonekalut");
+                    huonekalut += 6;
+                    //kone.lisääPisteitä(6, "Vaatteet");
+                    vaatteet += 6;
                 }
                 break;
             //Kiinnostaako sinua autot ja ajoneuvotekniikka?
             case 15:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(10, "Autot");
-                    kone.lisääPisteitä(8, "Tekniikka");
-                    kone.lisääPisteitä(5, "Kaytannollinen");
+                    //kone.lisääPisteitä(10, "Autot");
+                    autot += 10;
+                    //kone.lisääPisteitä(8, "Tekniikka");
+                    tekniikka += 8;
+                    //kone.lisääPisteitä(5, "Kaytannollinen");
+                    kaytannollinen += 5;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Musiikki");
-                    kone.lisääPisteitä(5, "Kauneus");
-                    kone.lisääPisteitä(6, "Vaatteet");
-                    kone.lisääPisteitä(6, "Terveys");
-                    kone.lisääPisteitä(6, "Eläimet");
+                    //kone.lisääPisteitä(7, "Musiikki");
+                    musiikki += 7;
+                    //kone.lisääPisteitä(5, "Kauneus");
+                    kauneus += 5;
+                    //kone.lisääPisteitä(6, "Vaatteet");
+                    vaatteet += 6;
+                    //kone.lisääPisteitä(6, "Terveys");
+                    terveys += 6;
+                    //kone.lisääPisteitä(6, "Eläimet");
+                    elaimet += 6;
                 }
                 break;
             //Vietätkö paljon aikaa tietokoneella? joo :D
             case 16:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Matemaattinen");
-                    kone.lisääPisteitä(5, "Kielet");
-                    kone.lisääPisteitä(7, "Tekninen");
-                    kone.lisääPisteitä(10, "Tietokoneet");
-                    kone.lisääPisteitä(4, "Luonnontieteet");
-                    kone.lisääPisteitä(4, "Taiteellinen");
+                    //kone.lisääPisteitä(8, "Matemaattinen");
+                    matemaattinen += 8;
+                    //kone.lisääPisteitä(5, "Kielet");
+                    kielet += 5;
+                    //kone.lisääPisteitä(7, "Tekninen");
+                    tekninen += 7;
+                    //kone.lisääPisteitä(10, "Tietokoneet");
+                    tietokoneet += 10;
+                    //kone.lisääPisteitä(4, "Luonnontieteet");
+                    luonnontieteet += 4;
+                    //kone.lisääPisteitä(4, "Taiteellinen");
+                    taiteellinen += 4;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Ymparisto");
-                    kone.lisääPisteitä(5, "Kaytannollinen");
-                    kone.lisääPisteitä(6, "Kokki");
-                    kone.lisääPisteitä(6, "Hyvinvointi");
-                    kone.lisääPisteitä(6, "Urheilullinen");
+                    //kone.lisääPisteitä(7, "Ymparisto");
+                    ymparisto += 7;
+                    //kone.lisääPisteitä(5, "Kaytannollinen");
+                    kaytannollinen += 5;
+                    //kone.lisääPisteitä(6, "Kokki");
+                    kokki += 6;
+                    //kone.lisääPisteitä(6, "Hyvinvointi");
+                    hyvinvointi += 6;
+                    //kone.lisääPisteitä(6, "Urheilullinen");
+                    urheilullinen += 6;
                 }
                 break;
             //Pidätkö rakentamisesta ja arkkitehtuurista? emmä tiiä :D
             case 17:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Matemaattinen");
-                    kone.lisääPisteitä(8, "Tekninen");
-                    kone.lisääPisteitä(10, "Arkkitehti");
-                    kone.lisääPisteitä(7, "Ideoija");
-                    kone.lisääPisteitä(4, "Kaytannollinen");
-                    kone.lisääPisteitä(4, "Taiteellinen");
+                    //kone.lisääPisteitä(8, "Matemaattinen");
+                    matemaattinen += 8;
+                    //kone.lisääPisteitä(8, "Tekninen");
+                    tekninen += 8;
+                    //kone.lisääPisteitä(10, "Arkkitehti");
+                    arkkitehti += 10;
+                    //kone.lisääPisteitä(7, "Ideoija");
+                    ideoija += 7;
+                    //kone.lisääPisteitä(4, "Kaytannollinen");
+                    kaytannollinen += 4;
+                    //kone.lisääPisteitä(4, "Taiteellinen");
+                    taiteellinen += 4;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Ymparisto");
-                    kone.lisääPisteitä(5, "Johtaja");
-                    kone.lisääPisteitä(6, "Kokki");
-                    kone.lisääPisteitä(6, "Hyvinvointi");
-                    kone.lisääPisteitä(6, "Urheilullinen");
+                    //kone.lisääPisteitä(7, "Ymparisto");
+                    ymparisto += 7;
+                    //kone.lisääPisteitä(5, "Johtaja");
+                    johtaja += 5;
+                    //kone.lisääPisteitä(6, "Kokki");
+                    kokki += 6;
+                    //kone.lisääPisteitä(6, "Hyvinvointi");
+                    hyvinvointi += 6;
+                    //kone.lisääPisteitä(6, "Urheilullinen");
+                    urheilullinen += 6;
                 }
                 break;
             //Oletko sujuva puhumaan ja haaveilet myyntityöstä?
 
             case 18:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Kielet");
-                    kone.lisääPisteitä(5, "Bisnes");
-                    kone.lisääPisteitä(9, "Esiintyja");
-                    kone.lisääPisteitä(4, "Matkustelu");
-                    kone.lisääPisteitä(4, "Johtaja");
-                    kone.lisääPisteitä(4, "Assistentti");
+                    //kone.lisääPisteitä(8, "Kielet");
+                    kielet += 8;
+                    //kone.lisääPisteitä(5, "Bisnes");
+                    bisnes += 5;
+                    //kone.lisääPisteitä(9, "Esiintyja");
+                    esiintyja += 9;
+                    //kone.lisääPisteitä(4, "Matkustelu");
+                    matkustelu += 4;
+                    //kone.lisääPisteitä(4, "Johtaja");
+                    johtaja += 4;
+                    //kone.lisääPisteitä(4, "Assistentti");
+                    assistentti += 4;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Ymparisto");
-                    kone.lisääPisteitä(5, "Tekniikka");
-                    kone.lisääPisteitä(6, "Autot");
-                    kone.lisääPisteitä(6, "Lapsirakas");
-                    kone.lisääPisteitä(6, "Luonnontieteet");
+                    //kone.lisääPisteitä(7, "Ymparisto");
+                    ymparisto += 7;
+                    //kone.lisääPisteitä(5, "Tekniikka");
+                    tekniikka += 5;
+                    //kone.lisääPisteitä(6, "Autot");
+                    autot += 6;
+                    //kone.lisääPisteitä(6, "Lapsirakas");
+                    lapsirakas += 6;
+                    //kone.lisääPisteitä(6, "Luonnontieteet");
+                    luonnontieteet += 6;
                 }
                 break;
             //Oletko pikkutarkka? en :D
             case 19:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(8, "Matemaattinen");
-                    kone.lisääPisteitä(5, "Kielet");
-                    kone.lisääPisteitä(7, "Tekninen");
-                    kone.lisääPisteitä(10, "Tietokoneet");
-                    kone.lisääPisteitä(4, "Luonnontieteet");
-                    kone.lisääPisteitä(5, "Tehy");
+                    //kone.lisääPisteitä(8, "Matemaattinen");
+                    matemaattinen += 8;
+                    //kone.lisääPisteitä(5, "Kielet");
+                    kielet += 8;
+                    //kone.lisääPisteitä(7, "Tekninen");
+                    tekninen += 7;
+                    //kone.lisääPisteitä(10, "Tietokoneet");
+                    tietokoneet += 10;
+                    //kone.lisääPisteitä(4, "Luonnontieteet");
+                    luonnontieteet += 4;
+                    //kone.lisääPisteitä(5, "Tehy");
+                    tehy += 5;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Ihmislaheinen");
+                    //kone.lisääPisteitä(7, "Ihmislaheinen");
+                    ihmislaheinen += 7;
                     kone.lisääPisteitä(5, "Kaytannollinen");
-                    kone.lisääPisteitä(6, "Kokki");
-                    kone.lisääPisteitä(6, "Hyvinvointi");
-                    kone.lisääPisteitä(6, "Urheilullinen");
+                    kaytannollinen += 5;
+                    //kone.lisääPisteitä(6, "Kokki");
+                    kokki += 6;
+                    //kone.lisääPisteitä(6, "Hyvinvointi");
+                    hyvinvointi += 6;
+                    //kone.lisääPisteitä(6, "Urheilullinen");
+                    urheilullinen += 6;
                 }
                 break;
             //Ovatko ympäristöasiat lähellä sydäntäsi? ei :D
             case 20:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(10, "Ymparisto");
-                    kone.lisääPisteitä(5, "Arkkitehti");
-                    kone.lisääPisteitä(7, "Empaattinen");
-                    kone.lisääPisteitä(7, "Terveys");
-                    kone.lisääPisteitä(6, "Hyvinvointi");
+                    //kone.lisääPisteitä(10, "Ymparisto");
+                    ymparisto += 10;
+                    //kone.lisääPisteitä(5, "Arkkitehti");
+                    arkkitehti += 5;
+                    //kone.lisääPisteitä(7, "Empaattinen");
+                    empaattinen += 7;
+                    //kone.lisääPisteitä(7, "Terveys");
+                    terveys += 7;
+                    //kone.lisääPisteitä(6, "Hyvinvointi");
+                    hyvinvointi += 6;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Matemaattinen");
-                    kone.lisääPisteitä(5, "Bisnes");
-                    kone.lisääPisteitä(2, "Esiintyjä");
-                    kone.lisääPisteitä(6, "Ideoija");
-                    kone.lisääPisteitä(6, "Autot");
+                    //kone.lisääPisteitä(7, "Matemaattinen");
+                    matemaattinen += 7;
+                    //kone.lisääPisteitä(5, "Bisnes");
+                    bisnes += 5;
+                    //kone.lisääPisteitä(2, "Esiintyjä");
+                    esiintyja += 2;
+                    //kone.lisääPisteitä(6, "Ideoija");
+                    ideoija += 6;
+                    //kone.lisääPisteitä(6, "Autot");
+                    autot += 6;
                 }
                 break;
             //Oletko johtajatyyppiä? en :D
             case 21:
                 if (vastaus.equals(messages.getString("yes"))) {
-                    kone.lisääPisteitä(10, "Johtaja");
-                    kone.lisääPisteitä(8, "Bisnes");
-                    kone.lisääPisteitä(2, "Kokki");
-                    kone.lisääPisteitä(3, "Sankari");
-                    kone.lisääPisteitä(4, "Kielet");
-                    kone.lisääPisteitä(1, "Assistentti");
+                    //kone.lisääPisteitä(10, "Johtaja");
+                    johtaja += 10;
+                    //kone.lisääPisteitä(8, "Bisnes");
+                    bisnes += 8;
+                    //kone.lisääPisteitä(2, "Kokki");
+                    kokki += 2;
+                    //kone.lisääPisteitä(3, "Sankari");
+                    sankari += 3;
+                    //kone.lisääPisteitä(4, "Kielet");
+                    kielet += 4;
+                    //kone.lisääPisteitä(1, "Assistentti");
+                    assistentti += 1;
                 }
                 if (vastaus.equals(messages.getString("no"))) {
-                    kone.lisääPisteitä(7, "Ymparisto");
-                    kone.lisääPisteitä(5, "Kaytannollinen");
-                    kone.lisääPisteitä(6, "Eläimet");
-                    kone.lisääPisteitä(6, "Hyvinvointi");
-                    kone.lisääPisteitä(6, "Urheilullinen");
+                    //kone.lisääPisteitä(7, "Ymparisto");
+                    ymparisto += 7;
+                    //kone.lisääPisteitä(5, "Kaytannollinen");
+                    kaytannollinen += 5;
+                    //kone.lisääPisteitä(6, "Eläimet");
+                    elaimet += 6;
+                    //kone.lisääPisteitä(6, "Hyvinvointi");
+                    hyvinvointi += 6;
+                    //kone.lisääPisteitä(6, "Urheilullinen");
+                    urheilullinen += 6;
                 }
                 break;
             default:
@@ -723,5 +955,42 @@ public class FXMLDocumentController extends Template implements Initializable {
 
     }
 
+   
+    public void addPoints() {
+        kone.lisääPisteitä(matemaattinen, "Matemaattinen");
+        kone.lisääPisteitä(bisnes, "Bisnes");
+        kone.lisääPisteitä(tekninen, "Tekninen");
+        kone.lisääPisteitä(arkkitehti, "Arkkitehti");
+        kone.lisääPisteitä(kielet, "Kielet");
+        kone.lisääPisteitä(johtaja, "Johtaja");
+        kone.lisääPisteitä(kauneus, "Kauneus");
+        kone.lisääPisteitä(urheilullinen, "Urheilullinen");
+        kone.lisääPisteitä(taiteellinen, "Taiteellinen");
+        kone.lisääPisteitä(musiikki, "Musiikki");
+        kone.lisääPisteitä(ihmislaheinen, "Ihmisläheinen");
+        kone.lisääPisteitä(kaytannollinen, "Käytännöllinen");
+        kone.lisääPisteitä(sankari, "Sankari");
+        kone.lisääPisteitä(empaattinen, "Empaattinen");
+        kone.lisääPisteitä(ideoija, "Ideoija");
+        kone.lisääPisteitä(autot, "Autot");
+        kone.lisääPisteitä(huonekalut, "Huonekalut");
+        kone.lisääPisteitä(kokki, "Kokki");
+        kone.lisääPisteitä(ymparisto, "Ympäristö");
+        kone.lisääPisteitä(elaimet, "Eläimet");
+        kone.lisääPisteitä(ruokavalio, "Ruokavalio");
+        kone.lisääPisteitä(esiintyja, "Esiintyjä");
+        kone.lisääPisteitä(pelastaja, "Pelastaja");
+        kone.lisääPisteitä(lapsirakas, "Lapsirakas");
+        kone.lisääPisteitä(tietokoneet, "Tietokoneet");
+        kone.lisääPisteitä(luonnontieteet, "Luonnontieteet");
+        kone.lisääPisteitä(fysioterapia, "Fysioterapia");
+        kone.lisääPisteitä(terveys, "Terveys");
+        kone.lisääPisteitä(hyvinvointi, "Hyvinvointi");
+        kone.lisääPisteitä(matkustelu, "Matkustelu");
+        kone.lisääPisteitä(vaatteet, "Vaatteet");
+        kone.lisääPisteitä(tekniikka, "Tekniikka");
+        kone.lisääPisteitä(assistentti, "Assistentti");
+        kone.lisääPisteitä(tehy, "TeHy");
+    }
 
 }
