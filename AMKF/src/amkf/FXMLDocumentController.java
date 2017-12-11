@@ -85,6 +85,10 @@ public class FXMLDocumentController extends Template implements Initializable {
     private Text q21;
     @FXML
     private Text q22;
+    
+    @FXML
+    private Text kyselyTitle;
+
 
     @FXML
     MenuButton kys1;
@@ -329,6 +333,8 @@ public class FXMLDocumentController extends Template implements Initializable {
         kyselyBtn.setText(messages.getString("questions"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
+        kyselyTitle.setText(messages.getString(""));//lisätty
+        ready.setText(messages.getString("ready"));//lisätty
         q1.setText(messages.getString("q1"));
         q2.setText(messages.getString("q2"));
         q3.setText(messages.getString("q3"));
