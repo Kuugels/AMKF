@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="1093.0" prefHeight="738.0" prefWidth="1062.0" styleClass="AnchorPane" stylesheets="@index.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AllEducationsController">
+<AnchorPane maxWidth="1093.0" prefHeight="738.0" prefWidth="1062.0" styleClass="AnchorPane" stylesheets="@index.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AllEducationsController">
     <children>
       <AnchorPane layoutX="92.0" layoutY="6.0" maxWidth="1093.0" prefHeight="732.0" prefWidth="930.0" styleClass="AnchorPane" stylesheets="@index.css">
          <children>
@@ -49,73 +38,33 @@
                <content>
                   <BorderPane fx:id="borderPane" prefHeight="547.0" prefWidth="779.0" />
                </content></ScrollPane>
-            <Button fx:id="pinkButton" layoutX="88.0" layoutY="412.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="20.0" style="-fx-background-color: f544ac;" styleClass="coBut">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Button>
-            <Button fx:id="petrolButton" layoutX="62.0" layoutY="412.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="20.0" style="-fx-background-color: #12867a;" styleClass="coBut">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Button>
-            <Button fx:id="whiteButton" layoutX="35.0" layoutY="412.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="24.0" style="-fx-background-color: white;" styleClass="coBut">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Button>
-            <Button fx:id="purpleButton" layoutX="8.0" layoutY="412.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="20.0" style="-fx-background-color: #8B008B;" styleClass="coBut">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Button>
-            <Button fx:id="greenButton" layoutX="-19.0" layoutY="412.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="20.0" style="-fx-background-color: #58a506;" styleClass="coBut">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </Button>
             <ImageView fitHeight="157.0" fitWidth="1051.0" layoutX="-87.0" layoutY="-2.0">
                <image>
                   <Image url="@banu.png" />
                </image>
             </ImageView>
-            <Button fx:id="closeButton" layoutX="-5.0" layoutY="472.0" mnemonicParsing="false" onAction="#closeButtonAction" styleClass="sammuta" text="Sammuta" />
-            <ImageView fitHeight="50.0" fitWidth="49.0" layoutX="20.0" layoutY="531.0">
-               <image>
-                  <Image url="@face.png" />
-               </image>
-            </ImageView>
-            <Pane layoutX="-32.0" layoutY="441.0" prefHeight="25.0" prefWidth="45.0" styleClass="reunatlippuun" />
-            <Pane layoutX="23.0" layoutY="441.0" prefHeight="25.0" prefWidth="45.0" styleClass="reunatlippuun" />
-            <Pane layoutX="78.0" layoutY="441.0" prefHeight="25.0" prefWidth="45.0" styleClass="reunatlippuun" />
-            <ImageView fx:id="fi" fitHeight="23.0" fitWidth="43.0" layoutX="25.0" layoutY="440.0" onMouseClicked="#fiLan">
+            <Button fx:id="closeButton" layoutX="-4.0" layoutY="674.0" mnemonicParsing="false" onAction="#closeButtonAction" styleClass="sammuta" text="Sammuta" />
+            <Pane layoutX="-31.0" layoutY="647.0" prefHeight="25.0" prefWidth="45.0" styleClass="reunatlippuun" />
+            <Pane layoutX="24.0" layoutY="647.0" prefHeight="25.0" prefWidth="45.0" styleClass="reunatlippuun" />
+            <Pane layoutX="79.0" layoutY="647.0" prefHeight="25.0" prefWidth="45.0" styleClass="reunatlippuun" />
+            <ImageView fx:id="fi" fitHeight="23.0" fitWidth="43.0" layoutX="26.0" layoutY="646.0" onMouseClicked="#fiLan">
                <image>
                   <Image url="@fi.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="gb" fitHeight="23.0" fitWidth="43.0" layoutX="80.0" layoutY="440.0" onMouseClicked="#gbLan">
+            <ImageView fx:id="gb" fitHeight="23.0" fitWidth="43.0" layoutX="81.0" layoutY="646.0" onMouseClicked="#gbLan">
                <image>
                   <Image url="@gb.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="ee" fitHeight="23.0" fitWidth="43.0" layoutX="-30.0" layoutY="440.0" onMouseClicked="#eeLan">
+            <ImageView fx:id="ee" fitHeight="23.0" fitWidth="43.0" layoutX="-29.0" layoutY="646.0" onMouseClicked="#eeLan">
                <image>
                   <Image url="@ee.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="230.0" fitWidth="265.0" layoutX="-87.0" layoutY="411.0">
+               <image>
+                  <Image url="@kuvanen.png" />
                </image>
             </ImageView>
          </children>
