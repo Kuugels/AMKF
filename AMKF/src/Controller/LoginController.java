@@ -127,6 +127,8 @@ public class LoginController extends Template implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         // do what you have to do
         stage.close();
+        
+        System.exit(0);
     }
 
 }

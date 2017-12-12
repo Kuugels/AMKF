@@ -53,11 +53,12 @@ public class KoulutuksetController extends Template implements Initializable {
         topKoulutukset = kone.getTopKoulutukset(koulutusmäärä);
         kuvaukset = new String[topKoulutukset.length];
 
-        updateGUI();
 
         for (int i = 0; i < topKoulutukset.length; i++) {
             kuvaukset[i] = kone.getKuvaus(topKoulutukset[i]);
         }
+        
+        updateGUI();
 
         for (int i = 0; i < kuvaukset.length; i++) {
             System.out.println("------------------Koulutus" + (i + 1) + "  -------------------");
@@ -65,7 +66,7 @@ public class KoulutuksetController extends Template implements Initializable {
             System.out.println("Kuvaus: " + kuvaukset[i]);
             System.out.println("------------------------------------------------");
         }
-        createListOfEducations();
+        //createListOfEducations();
     }
 
     /**
@@ -125,15 +126,19 @@ public class KoulutuksetController extends Template implements Initializable {
 
         // do what you have to do
         stage.close();
+        
+        System.exit(0);
 
     }
     
     @Override
     public void updateGUI() {
         closeButton.setText(messages.getString("shutdown"));
-        kyselyBtn.setText(messages.getString("questions"));
+        kyselyBtn.setText(messages.getString("topEducations"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
+        sopuli.setText(messages.getString("questions"));
+        createListOfEducations();
     }
 
 }

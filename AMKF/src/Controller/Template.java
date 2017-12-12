@@ -37,6 +37,8 @@ public abstract class Template {
     public Button yhteystiedotBtn;
     @FXML
     public Button koulutuksetBtn;
+    @FXML
+    public Button sopuli;
 
     public LanguageSelection languageSelection;
     public ResourceBundle messages;
@@ -81,7 +83,7 @@ public abstract class Template {
                     //Seuraavan scenen lataus
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
-                    Parent root = FXMLLoader.load(getClass().getResource("/amkf/Login.fxml"));//Väliaikasesti heittää loginii
+                    Parent root = FXMLLoader.load(getClass().getResource("/amkf/ContactPage.fxml"));
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     System.out.println("Scene vaihdettu");
@@ -99,6 +101,23 @@ public abstract class Template {
                     Node node = (Node) event.getSource();
                     Stage stage = (Stage) node.getScene().getWindow();
                     Parent root = FXMLLoader.load(getClass().getResource("/amkf/Koulutukset.fxml"));
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    System.out.println("Scene vaihdettu");
+                }catch (IOException e) {
+                    System.out.println("Jees very mutch errors vi häve hier");
+                }
+            }
+        });
+        
+        sopuli.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    //Seuraavan scenen lataus
+                    Node node = (Node) event.getSource();
+                    Stage stage = (Stage) node.getScene().getWindow();
+                    Parent root = FXMLLoader.load(getClass().getResource("/amkf/indexMusta.fxml"));
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     System.out.println("Scene vaihdettu");

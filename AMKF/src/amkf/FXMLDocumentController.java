@@ -301,6 +301,7 @@ public class FXMLDocumentController extends Template implements Initializable {
         // do what you have to do
         stage.close();
 
+        System.exit(0);
     }
 
     /**
@@ -330,10 +331,13 @@ public class FXMLDocumentController extends Template implements Initializable {
     @Override
     public void updateGUI() {
         closeButton.setText(messages.getString("shutdown"));
-        kyselyBtn.setText(messages.getString("questions"));
+        kyselyBtn.setText(messages.getString("topEducations"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
-        kyselyTitle.setText(messages.getString(""));//lisätty
+        
+        sopuli.setText(messages.getString("questions"));
+        
+        kyselyTitle.setText(messages.getString("inquiry"));//lisätty
         ready.setText(messages.getString("ready"));//lisätty
         q1.setText(messages.getString("q1"));
         q2.setText(messages.getString("q2"));

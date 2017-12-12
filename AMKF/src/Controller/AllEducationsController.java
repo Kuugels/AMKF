@@ -94,9 +94,10 @@ public class AllEducationsController extends Template implements Initializable {
     @Override
     public void updateGUI() {
         closeButton.setText(messages.getString("shutdown"));
-        kyselyBtn.setText(messages.getString("questions"));
+        kyselyBtn.setText(messages.getString("topEducations"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
+        sopuli.setText(messages.getString("questions"));
     }
 
     /**
@@ -113,6 +114,8 @@ public class AllEducationsController extends Template implements Initializable {
 
         // do what you have to do
         stage.close();
+        
+        System.exit(0);
 
     }
 
