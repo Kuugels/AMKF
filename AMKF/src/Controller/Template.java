@@ -37,6 +37,9 @@ public abstract class Template {
     public Button yhteystiedotBtn;
     @FXML
     public Button koulutuksetBtn;
+    /**
+     * Semmone eläin
+     */
     @FXML
     public Button sopuli;
 

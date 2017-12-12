@@ -43,6 +43,7 @@ public class ContactPageController extends Template implements Initializable {
         kyselyBtn.setText(messages.getString("topEducations"));
         koulutuksetBtn.setText(messages.getString("educations"));
         yhteystiedotBtn.setText(messages.getString("contactinfo"));
+        sopuli.setText(messages.getString("questions"));
         
         contactData.setText(messages.getString("contactinfo"));
         email.setText(messages.getString("email"));
