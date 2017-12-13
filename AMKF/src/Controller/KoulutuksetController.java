@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
@@ -77,7 +76,7 @@ public class KoulutuksetController extends Template implements Initializable {
         if (messages == null) {
             System.out.println("Messages on null");
         }
-        Button btn = new Button(messages.getString("questions"));
+        //Button btn = new Button(messages.getString("questions")); //Toimintaa ei ehitty tekemään
         Text ed = new Text("");
         
         
@@ -93,7 +92,7 @@ public class KoulutuksetController extends Template implements Initializable {
             });
         }
         
-        list.getItems().add(btn);
+        //list.getItems().add(btn);//Toimintaa ei ehitty tekemään
         borderPane.setCenter(list);
         scrollPane.setContent(borderPane);
     }
