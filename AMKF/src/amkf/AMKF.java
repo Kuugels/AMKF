@@ -43,6 +43,7 @@ public class AMKF extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Viimeset muokkaukset tehty
         System.out.println("java version: " + System.getProperty("java.version"));
         System.out.println("javafx.version: " + System.getProperty("javafx.version"));
         launch(args);
