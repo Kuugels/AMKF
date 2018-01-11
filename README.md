@@ -1,9 +1,13 @@
 # AMKF
-Ohjelmistotuotantoprojekti 1
+Ohjelmistotuotantoprojekti 1 & 2 (Syksy 2017)
 
-Ammattikorkeakoulu finder
+Ammattikorkeakoulu Finder
 
-Ohjelman tarkoituksena on tehdä kaikkea kivaa ja värikästä.
+Metropolia Ammattikorkeakoulu
 
+Ryhmän jäsenet:
 
-Juu kyllä näin on.
+Mikko Rajala
+Samuli Käkönen
+Minna Juuma
+Tiina Jormalainen
